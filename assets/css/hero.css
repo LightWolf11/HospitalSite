@@ -4,9 +4,8 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 40px;
-    padding: 100px 0;
+    padding: 60px 0;
     background: linear-gradient(135deg, var(--light-color), white);
-    min-height: calc(100vh - 70px);
 }
 
 .hero-content h1 {

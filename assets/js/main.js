@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', function() {
         if (event.data.type === 'resize') {
             const iframeElement = document.querySelector(`iframe[src*="${event.data.section}"]`);
             if (iframeElement) {
-                iframeElement.style.height = (event.data.height + 30) + 'px';
+                iframeElement.style.height = event.data.height + 'px';
             }
         }
     });
@@ -31,13 +31,17 @@ window.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 try {
                     if (iframe.contentDocument && iframe.contentDocument.body) {
-                        const height = iframe.contentDocument.body.scrollHeight;
-                        iframe.style.height = (height + 30) + 'px';
+                        const body = iframe.contentDocument.body;
+                        const section = iframe.contentDocument.querySelector('section');
+                        
+                        // Get the natural height of section content
+                        const height = section ? section.scrollHeight : body.scrollHeight;
+                        iframe.style.height = (height + 10) + 'px';
                     }
                 } catch (e) {
-                    iframe.style.height = '600px';
+                    iframe.style.height = 'auto';
                 }
-            }, 100);
+            }, 150);
         });
     });
 
