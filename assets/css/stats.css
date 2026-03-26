@@ -1,19 +1,20 @@
 
 .stats {
     background: var(--dark-color);
-    padding: 50px 0;
+    padding: 60px 0;
 }
 
 .stats .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 50px;
 }
 
 .stat-item {
     text-align: center;
     color: white;
     animation: countUp 0.8s ease both;
+    padding: 30px 20px;
 }
 
 .stat-item:nth-child(1) { animation-delay: 0.1s; }
@@ -22,13 +23,16 @@
 .stat-item:nth-child(4) { animation-delay: 0.4s; }
 
 .stat-number {
-    font-size: 48px;
+    font-size: 52px;
     font-weight: bold;
-    color: var(--secondary-color);
-    margin-bottom: 10px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: block;
 }
 
 .stat-label {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    line-height: 1.6;
 }

@@ -3,24 +3,30 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 40px;
-    padding: 60px 0;
+    gap: 60px;
+    padding: 80px 0;
     background: linear-gradient(135deg, var(--light-color), white);
 }
 
+.hero-content {
+    padding: 0 20px;
+}
+
 .hero-content h1 {
-    font-size: 48px;
+    font-size: 52px;
     color: var(--dark-color);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     line-height: 1.2;
     animation: fadeInUp 0.8s ease 0.2s both;
+    font-weight: 700;
 }
 
 .hero-subtitle {
-    font-size: 20px;
+    font-size: 18px;
     color: #666;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     animation: fadeInUp 0.8s ease 0.4s both;
+    line-height: 1.6;
 }
 
 .hero-buttons {
@@ -37,10 +43,10 @@
 }
 
 .image-placeholder {
-    width: 350px;
-    height: 350px;
+    width: 380px;
+    height: 380px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 20px;
+    border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
