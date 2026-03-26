@@ -106,3 +106,45 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+function validateForm(data) {
+    if (!data.name || data.name.trim().length < 2) return false;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!data.email || !emailRegex.test(data.email)) return false;
+    const phoneRegex = /^[\d\s\-\(\)\+]*$/;
+    if (!data.phone || data.phone.length < 10 || !phoneRegex.test(data.phone)) return false;
+    if (!data.specialty) return false;
+    if (!data.date) return false;
+    if (!data.time) return false;
+    return true;
+}
+
+function showMessage(text, type) {
+    const formMessage = document.getElementById('formMessage');
+    if (formMessage) {
+        formMessage.textContent = text;
+        formMessage.className = 'form-message ' + type;
+        formMessage.style.display = 'block';
+    }
+}
+
+function validateField(field) {
+    switch(field.id) {
+        case 'name':
+            if (field.value.trim().length < 2) {
+                field.style.borderColor = '#ff6b6b';
+            }
+            break;
+        case 'email':
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(field.value)) {
+                field.style.borderColor = '#ff6b6b';
+            }
+            break;
+        case 'phone':
+            if (field.value.length < 10) {
+                field.style.borderColor = '#ff6b6b';
+            }
+            break;
+    }
+}
