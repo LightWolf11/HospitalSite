@@ -1,11 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Больница</title>
+    <title>Больница "В последний путь" - Ваше Здоровье Наш Приоритет</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/doctors.css">
+    <link rel="stylesheet" href="css/appointment.css">
+    <link rel="stylesheet" href="css/stats.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="#" class="logo">
+                    <i class="fas fa-hospital-user"></i> Больница "В последний путь"
+                </a>
+                <button class="hamburger" id="hamburgerBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Главная</a></li>
+                <li><a href="#services" class="nav-link">Услуги</a></li>
+                <li><a href="#doctors" class="nav-link">Врачи</a></li>
+                <li><a href="#contact" class="nav-link">Контакты</a></li>
+                <li><a href="#appointment" class="nav-link btn-primary">Записать приём</a></li>
+            </ul>
+        </div>
+    </nav>
+
+  
+    <section class="hero" id="home"><iframe src="sections/hero.html" frameborder="0" scrolling="no" style="width: 100%; border: none;"></iframe></section>
+    <section class="services" id="services"><iframe src="sections/services.html" frameborder="0" scrolling="no" style="width: 100%; border: none;"></iframe></section>
+    <section class="doctors" id="doctors"><iframe src="sections/doctors.html" frameborder="0" scrolling="no" style="width: 100%; border: none;"></iframe></section>
+    <section class="appointment" id="appointment"><iframe src="sections/appointment.html" frameborder="0" scrolling="no" style="width: 100%; border: none;"></iframe></section>
+    <section class="stats"><iframe src="sections/stats.html" frameborder="0" scrolling="no" style="width: 100%; border: none;"></iframe></section>
+    <section class="contact" id="contact"><iframe src="sections/contact.html" frameborder="0" scrolling="no" style="width: 100%; border: none;"></iframe></section>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Больница "В последний путь"</h3>
+                    <p>Ваше здоровье - наш приоритет</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#doctors">Врачи</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Услуги</h4>
+                    <ul>
+                        <li><a href="#services">Консультация</a></li>
+                        <li><a href="#services">Диагностика</a></li>
+                        <li><a href="#services">Лечение</a></li>
+                        <li><a href="#services">Профилактика</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="#">Лицензия</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Условия использования</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Больница "В последний путь". Разработана на конкурс ПрофМастерства. </p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
