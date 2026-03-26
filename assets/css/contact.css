@@ -1,48 +1,58 @@
-.contact-section {
+.contact {
     padding: 60px 0;
-    background: linear-gradient(135deg, var(--dark-color) 0%, var(--primary-color) 100%);
+    background: var(--dark-color);
 }
 
-.contact-container {
+.contact .section-title {
+    color: white;
+    margin-bottom: 50px;
+}
+
+.contact .section-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.contact-info {
-    color: white;
-}
-
-.contact-info h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    color: white;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
 }
 
 .contact-item {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 30px;
-    gap: 20px;
-}
-
-.contact-item i {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    flex-shrink: 0;
-    margin-top: 5px;
-}
-
-.contact-item div h3 {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
     color: white;
 }
 
-.contact-item div p {
+.contact-item i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.contact-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: 600;
+}
+
+.contact-item p {
     color: rgba(255, 255, 255, 0.8);
-    line-height: 1.6;
+    line-height: 1.8;
+}
+
+.contact-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-item a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
 }
 
 .contact-form {
@@ -78,7 +88,7 @@
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
 }
 
 .form-group textarea {
@@ -106,16 +116,7 @@
 }
 
 @media (max-width: 768px) {
-    .contact-container {
+    .contact-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .contact-info h2 {
-        font-size: 2rem;
-    }
-
-    .contact-form {
-        padding: 30px 20px;
     }
 }
