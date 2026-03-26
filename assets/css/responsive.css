@@ -1,0 +1,141 @@
+@media (max-width: 768px) {
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--primary-color);
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+        margin-left: auto;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 0;
+        min-height: auto;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .image-placeholder {
+        width: 250px;
+        height: 250px;
+        font-size: 100px;
+    }
+
+    .services-grid,
+    .doctors-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+
+    .section-title {
+        font-size: 32px;
+    }
+
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 24px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+
+    .appointment-form {
+        padding: 25px 15px;
+    }
+
+    .nav-menu {
+        gap: 0;
+    }
+
+    .nav-menu li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .form-row {
+        gap: 10px;
+    }
+
+    .stats .container {
+        gap: 20px;
+    }
+}
