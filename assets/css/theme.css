@@ -169,7 +169,7 @@ p { color: var(--muted); }
 }
 
 .hero-content {
-  padding-inline: 56px;
+  padding-inline: 16px;
 }
 
 .services,
