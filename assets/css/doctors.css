@@ -58,10 +58,19 @@
     font-size: 60px;
     color: white;
     transition: var(--transition);
+    overflow: hidden;
 }
 
 .doctor-card:hover .doctor-image {
     transform: scale(1.1);
+}
+
+.doctor-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
 }
 
 .doctor-card h3 {

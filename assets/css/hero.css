@@ -42,6 +42,10 @@
     animation: fadeInRight 0.8s ease 0.4s both;
 }
 
+.hero > iframe {
+    grid-column: 1 / -1;
+}
+
 .image-placeholder {
     width: 380px;
     height: 380px;

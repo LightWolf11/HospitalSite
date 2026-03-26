@@ -30,16 +30,20 @@ window.addEventListener('DOMContentLoaded', function() {
         iframe.addEventListener('load', function() {
             setTimeout(() => {
                 try {
-                    if (iframe.contentDocument && iframe.contentDocument.body) {
-                        const body = iframe.contentDocument.body;
-                        const section = iframe.contentDocument.querySelector('section');
-                        const height = section ? section.scrollHeight : body.scrollHeight;
-                        iframe.style.height = (height + 10) + 'px';
+                    const doc = iframe.contentDocument;
+                    if (doc) {
+                        const section = doc.querySelector('section');
+                        const heights = [];
+                        if (section && Number.isFinite(section.scrollHeight)) heights.push(section.scrollHeight);
+                        if (doc.body && Number.isFinite(doc.body.scrollHeight)) heights.push(doc.body.scrollHeight);
+                        if (doc.documentElement && Number.isFinite(doc.documentElement.scrollHeight)) heights.push(doc.documentElement.scrollHeight);
+                        const height = heights.length ? Math.max(...heights) : 0;
+                        if (height > 0) iframe.style.height = (height + 10) + 'px';
                     }
                 } catch (e) {
                     iframe.style.height = 'auto';
                 }
-            }, 150);
+            }, 250);
         });
     });
 

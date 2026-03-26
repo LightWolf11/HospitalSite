@@ -5,9 +5,10 @@
 }
 
 .stats .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
 }
 
 .stat-item {
@@ -15,6 +16,8 @@
     color: white;
     animation: countUp 0.8s ease both;
     padding: 30px 20px;
+    flex: 1 1 220px;
+    max-width: 280px;
 }
 
 .stat-item:nth-child(1) { animation-delay: 0.1s; }
