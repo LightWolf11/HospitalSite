@@ -33,8 +33,6 @@ window.addEventListener('DOMContentLoaded', function() {
                     if (iframe.contentDocument && iframe.contentDocument.body) {
                         const body = iframe.contentDocument.body;
                         const section = iframe.contentDocument.querySelector('section');
-                        
-                        // Get the natural height of section content
                         const height = section ? section.scrollHeight : body.scrollHeight;
                         iframe.style.height = (height + 10) + 'px';
                     }
@@ -98,7 +96,3 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-console.log('%cБольница "В последний путь" - Сайт больницы', 'color: #0066cc; font-size: 20px; font-weight: bold');
-console.log('%cВерсия: 2.0.0 (iframe архитектура)', 'color: #666');
-console.log('%cСекции загружаются в отдельные фреймы', 'color: #00b4d8');
