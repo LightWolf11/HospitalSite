@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Услуги - В последний путь</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Услуги - Больница "В последний путь"</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/buttons.css">
+    <link rel="stylesheet" href="../assets/css/hero.css">
+    <link rel="stylesheet" href="../assets/css/services.css">
+    <link rel="stylesheet" href="../assets/css/doctors.css">
+    <link rel="stylesheet" href="../assets/css/appointment.css">
+    <link rel="stylesheet" href="../assets/css/stats.css">
+    <link rel="stylesheet" href="../assets/css/contact.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -12,7 +27,7 @@
         <div class="container">
             <div class="navbar-brand">
                 <a href="../index.html" class="logo">
-                    <i class="fas fa-hospital-user"></i> В последний путь
+                    <i class="fas fa-hospital-user"></i> Больница "В последний путь"
                 </a>
                 <button class="hamburger" id="hamburgerBtn">
                     <span></span>
@@ -30,32 +45,32 @@
         </div>
     </nav>
 
-    <section class="hero" style="background: linear-gradient(135deg, var(--light-color), white); min-height: auto; padding: 50px 0;">
-        <div class="hero-content">
+    <section class="hero" style="min-height: auto; padding: 58px 0; grid-template-columns: 1fr; justify-items: center;">
+        <div class="hero-content" style="text-align: center; margin: 0 auto; max-width: 900px; width: 100%; padding: 0 16px;">
             <h1 class="hero-title">Наши Услуги</h1>
             <p class="hero-subtitle">Полный спектр современного медицинского обслуживания</p>
         </div>
     </section>
 
-    <section class="services" style="padding: 80px 0;">
+    <section class="services" style="padding: 80px 0 60px;">
         <div class="container">
             <h2 class="section-title">Специализированная Помощь</h2>
             <p class="section-subtitle">Опытные врачи в каждой области медицины</p>
 
-            <div style="margin-top: 50px;">
-                <div style="margin-bottom: 50px; background: white; padding: 40px; border-radius: 15px; box-shadow: var(--shadow);">
-                    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 30px; align-items: start;">
-                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; color: white;">
+            <div class="services-grid" style="margin-top: 50px;">
+                <div class="service-card">
+                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
+                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
                             <i class="fas fa-heart"></i>
                         </div>
                         <div>
-                            <h3 style="color: var(--dark-color); margin-bottom: 10px; font-size: 28px;">Кардиология</h3>
-                            <p style="color: #666; margin-bottom: 15px; font-size: 16px; line-height: 1.8;">
+                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Кардиология</h3>
+                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
                                 Диагностика и лечение заболеваний сердечно-сосудистой системы. Мы специализируемся на профилактике инфарктов, инсультов и других сердечных осложнений.
                             </p>
-                            <div style="margin-top: 15px;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 5px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: #666;">
+                            <div style="margin-top: 15px; text-align: left;">
+                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
+                                <ul style="list-style: none; color: var(--muted);">
                                     <li>✓ Консультация кардиолога</li>
                                     <li>✓ ЭКГ и Эхокардиография</li>
                                     <li>✓ Холтеровское мониторирование</li>
@@ -66,19 +81,19 @@
                     </div>
                 </div>
 
-                <div style="margin-bottom: 50px; background: white; padding: 40px; border-radius: 15px; box-shadow: var(--shadow);">
-                    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 30px; align-items: start;">
-                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; color: white;">
+                <div class="service-card">
+                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
+                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
                             <i class="fas fa-lungs"></i>
                         </div>
                         <div>
-                            <h3 style="color: var(--dark-color); margin-bottom: 10px; font-size: 28px;">Пульмонология</h3>
-                            <p style="color: #666; margin-bottom: 15px; font-size: 16px; line-height: 1.8;">
+                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Пульмонология</h3>
+                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
                                 Лечение заболеваний дыхательной системы и легких. От простой простуды до хронических заболеваний - мы окажем профессиональную помощь.
                             </p>
-                            <div style="margin-top: 15px;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 5px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: #666;">
+                            <div style="margin-top: 15px; text-align: left;">
+                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
+                                <ul style="list-style: none; color: var(--muted);">
                                     <li>✓ Диагностика астмы и ХОБЛ</li>
                                     <li>✓ Рентгенография легких</li>
                                     <li>✓ Спирометрия</li>
@@ -89,19 +104,19 @@
                     </div>
                 </div>
 
-                <div style="margin-bottom: 50px; background: white; padding: 40px; border-radius: 15px; box-shadow: var(--shadow);">
-                    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 30px; align-items: start;">
-                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; color: white;">
+                <div class="service-card">
+                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
+                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
                             <i class="fas fa-tooth"></i>
                         </div>
                         <div>
-                            <h3 style="color: var(--dark-color); margin-bottom: 10px; font-size: 28px;">Стоматология</h3>
-                            <p style="color: #666; margin-bottom: 15px; font-size: 16px; line-height: 1.8;">
+                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Стоматология</h3>
+                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
                                 Профилактика и лечение заболеваний зубов и полости рта. Современные безболезненные методы лечения и красивая улыбка.
                             </p>
-                            <div style="margin-top: 15px;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 5px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: #666;">
+                            <div style="margin-top: 15px; text-align: left;">
+                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
+                                <ul style="list-style: none; color: var(--muted);">
                                     <li>✓ Профилактическая чистка</li>
                                     <li>✓ Лечение кариеса</li>
                                     <li>✓ Протезирование и имплантация</li>
@@ -112,21 +127,21 @@
                     </div>
                 </div>
 
-                <div style="margin-bottom: 50px; background: white; padding: 40px; border-radius: 15px; box-shadow: var(--shadow);">
-                    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 30px; align-items: start;">
-                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; color: white;">
+                <div class="service-card">
+                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
+                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
                             <i class="fas fa-eye"></i>
                         </div>
                         <div>
-                            <h3 style="color: var(--dark-color); margin-bottom: 10px; font-size: 28px;">Офтальмология</h3>
-                            <p style="color: #666; margin-bottom: 15px; font-size: 16px; line-height: 1.8;">
+                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Офтальмология</h3>
+                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
                                 Диагностика и коррекция нарушений зрения. Лазерная коррекция, очки и контактные линзы под индивидуальный подбор.
                             </p>
-                            <div style="margin-top: 15px;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 5px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: #666;">
+                            <div style="margin-top: 15px; text-align: left;">
+                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
+                                <ul style="list-style: none; color: var(--muted);">
                                     <li>✓ Проверка зрения и подбор очков</li>
-                                    <li>✓ Лазерная коррекция LASIK</li>
+                                    <li>✓ Лазерная коррекция зрения</li>
                                     <li>✓ Диагностика катаракты и глаукомы</li>
                                     <li>✓ Хирургия сетчатки</li>
                                 </ul>
@@ -135,19 +150,19 @@
                     </div>
                 </div>
 
-                <div style="margin-bottom: 50px; background: white; padding: 40px; border-radius: 15px; box-shadow: var(--shadow);">
-                    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 30px; align-items: start;">
-                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; color: white;">
+                <div class="service-card">
+                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
+                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
                             <i class="fas fa-brain"></i>
                         </div>
                         <div>
-                            <h3 style="color: var(--dark-color); margin-bottom: 10px; font-size: 28px;">Неврология</h3>
-                            <p style="color: #666; margin-bottom: 15px; font-size: 16px; line-height: 1.8;">
+                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Неврология</h3>
+                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
                                 Лечение заболеваний нервной системы. От головных болей до сложных неврологических состояний - мы знаем как помочь.
                             </p>
-                            <div style="margin-top: 15px;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 5px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: #666;">
+                            <div style="margin-top: 15px; text-align: left;">
+                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
+                                <ul style="list-style: none; color: var(--muted);">
                                     <li>✓ Диагностика мигреней и головокружений</li>
                                     <li>✓ ЭЭГ и МРТ мозга</li>
                                     <li>✓ Лечение инсультов и ишемии</li>
@@ -158,19 +173,19 @@
                     </div>
                 </div>
 
-                <div style="margin-bottom: 50px; background: white; padding: 40px; border-radius: 15px; box-shadow: var(--shadow);">
-                    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 30px; align-items: start;">
-                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; color: white;">
+                <div class="service-card">
+                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
+                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
                             <i class="fas fa-bone"></i>
                         </div>
                         <div>
-                            <h3 style="color: var(--dark-color); margin-bottom: 10px; font-size: 28px;">Ортопедия</h3>
-                            <p style="color: #666; margin-bottom: 15px; font-size: 16px; line-height: 1.8;">
+                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Ортопедия</h3>
+                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
                                 Диагностика и лечение заболеваний костно-мышечной системы. Помощь при переломах, вывихах и заболеваниях суставов.
                             </p>
-                            <div style="margin-top: 15px;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 5px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: #666;">
+                            <div style="margin-top: 15px; text-align: left;">
+                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
+                                <ul style="list-style: none; color: var(--muted);">
                                     <li>✓ Лечение переломов и вывихов</li>
                                     <li>✓ Артроскопия суставов</li>
                                     <li>✓ Протезирование суставов</li>
@@ -184,56 +199,58 @@
         </div>
     </section>
 
-    <section style="background: var(--light-color); padding: 80px 0;">
+    <section class="services" style="padding: 10px 0 80px;">
         <div class="container">
             <h2 class="section-title">Дополнительные Услуги</h2>
             <p class="section-subtitle">Комплексный уход для вашего здоровья</p>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px;">
-                <div style="background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: var(--shadow);">
+            <div class="services-grid" style="margin-top: 50px;">
+                <div class="service-card">
                     <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">🧬</i>
                     <h3>Лабораторные Анализы</h3>
-                    <p style="color: #666; margin-top: 10px;">Полный спектр клинических и биохимических анализов крови</p>
+                    <p style="margin-top: 10px;">Полный спектр клинических и биохимических анализов крови</p>
                 </div>
 
-                <div style="background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: var(--shadow);">
+                <div class="service-card">
                     <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">📋</i>
                     <h3>УЗИ Диагностика</h3>
-                    <p style="color: #666; margin-top: 10px;">УЗИ всех органов и систем организма</p>
+                    <p style="margin-top: 10px;">УЗИ всех органов и систем организма</p>
                 </div>
 
-                <div style="background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: var(--shadow);">
+                <div class="service-card">
                     <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">💊</i>
                     <h3>Фармакотерапия</h3>
-                    <p style="color: #666; margin-top: 10px;">Подбор оптимальной медикаментозной терапии</p>
+                    <p style="margin-top: 10px;">Подбор оптимальной медикаментозной терапии</p>
                 </div>
 
-                <div style="background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: var(--shadow);">
+                <div class="service-card">
                     <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">🏃</i>
                     <h3>Физиотерапия</h3>
-                    <p style="color: #666; margin-top: 10px;">Восстановление и реабилитация после заболеваний</p>
+                    <p style="margin-top: 10px;">Самые лучшие физиотерапии это на СМГ</p>
                 </div>
 
-                <div style="background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: var(--shadow);">
+                <div class="service-card">
                     <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">🧘</i>
                     <h3>Профилактика</h3>
-                    <p style="color: #666; margin-top: 10px;">Профилактические осмотры и диспансеризация</p>
+                    <p style="margin-top: 10px;">Профилактические осмотры и псих-диспансеризация</p>
                 </div>
 
-                <div style="background: white; padding: 30px; border-radius: 10px; text-align: center; box-shadow: var(--shadow);">
+                <div class="service-card">
                     <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">📱</i>
                     <h3>Телемедицина</h3>
-                    <p style="color: #666; margin-top: 10px;">Онлайн консультации с врачами</p>
+                    <p style="margin-top: 10px;">Онлайн консультации с врачами</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 60px 0; color: white; text-align: center;">
+    <section style="padding: 60px 0; color: var(--text); text-align: center; background: transparent;">
         <div class="container">
-            <h2 style="font-size: 42px; margin-bottom: 20px;">Запишитесь на приём сегодня</h2>
-            <p style="font-size: 18px; margin-bottom: 30px;">Профессиональная помощь ждёт вас</p>
-            <a href="../index.html#appointment" class="btn btn-primary" style="background: white; color: var(--primary-color);">Записаться на приём</a>
+            <div style="max-width: 920px; margin: 0 auto; padding: 40px 24px; border-radius: 24px; border: 1px solid var(--line); background: var(--bg-card); box-shadow: var(--shadow);">
+                <h2 style="font-size: 42px; margin-bottom: 20px; color: var(--text);">Запишитесь на приём сегодня</h2>
+                <p style="font-size: 18px; margin-bottom: 30px; color: var(--muted);">Профессиональная помощь ждёт вас</p>
+                <a href="../index.html#appointment" class="btn btn-primary">Записаться на приём</a>
+            </div>
         </div>
     </section>
 
@@ -241,7 +258,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>В последний путь</h3>
+                    <h3>Больница "В последний путь"</h3>
                     <p>Ваше здоровье - наш приоритет</p>
                 </div>
 
@@ -251,6 +268,7 @@
                         <li><a href="../index.html">Главная</a></li>
                         <li><a href="#">Услуги</a></li>
                         <li><a href="about.html">О Нас</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
 
@@ -264,11 +282,11 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 В последний путь. Сделано для конкурса ПрофМастерства</p>
+                <p>&copy; 2026 Больница "В последний путь". Сделано для конкурса ПрофМастерства</p>
             </div>
         </div>
     </footer>
 
-    <script src="../js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

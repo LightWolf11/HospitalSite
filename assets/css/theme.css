@@ -214,6 +214,18 @@ p { color: var(--muted); }
   color: var(--muted);
 }
 
+.services .service-card h3,
+.doctors .doctor-card h3,
+.services .contact-item h3 {
+  color: var(--text);
+}
+
+.services .service-card p,
+.doctors .doctor-card .bio,
+.services .contact-item p {
+  color: var(--muted);
+}
+
 .service-icon,
 .doctor-image {
   background: rgba(51, 214, 198, 0.10);
