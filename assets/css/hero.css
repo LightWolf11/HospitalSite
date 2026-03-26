@@ -9,7 +9,7 @@
 }
 
 .hero-content {
-    padding: 0 20px;
+    padding: 0 20px 0 clamp(24px, 5vw, 72px);
 }
 
 .hero-content h1 {
@@ -44,6 +44,16 @@
 
 .hero > iframe {
     grid-column: 1 / -1;
+}
+
+.hero-photo {
+    width: min(520px, 100%);
+    aspect-ratio: 4 / 3;
+    border-radius: 28px;
+    object-fit: cover;
+    display: block;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .image-placeholder {

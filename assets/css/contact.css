@@ -126,3 +126,18 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* About page certifications: reuse contact styles but on light background */
+.services .contact-item {
+    color: var(--text-color);
+    border: 1px solid rgba(26, 46, 68, 0.12);
+    background: rgba(26, 46, 68, 0.03);
+}
+
+.services .contact-item h3 {
+    color: var(--dark-color);
+}
+
+.services .contact-item p {
+    color: rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,328 @@
+:root {
+  --bg: #0c0a0f;
+  --bg-soft: #15111a;
+  --bg-card: rgba(255, 255, 255, 0.06);
+  --line: rgba(255, 255, 255, 0.12);
+  --text: #f7f2ea;
+  --muted: #b8ae9d;
+  --gold: #33d6c6;
+  --gold-strong: #8b7dff;
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+  --transition: 0.35s ease;
+
+  --primary-color: var(--gold);
+  --secondary-color: var(--gold-strong);
+  --accent-color: #ff6ea6;
+  --dark-color: #0c0a0f;
+  --light-color: rgba(255, 255, 255, 0.04);
+  --text-color: var(--text);
+  --border-color: var(--line);
+  --shadow-lg: var(--shadow);
+}
+
+html,
+body {
+  background:
+    radial-gradient(circle at top left, rgba(51, 214, 198, 0.10), transparent 24%),
+    radial-gradient(circle at right center, rgba(255, 255, 255, 0.04), transparent 18%),
+    var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cormorant Garamond", ui-serif, Georgia, "Times New Roman", serif;
+  line-height: 1.05;
+  color: var(--text);
+}
+
+p { color: var(--muted); }
+
+.container {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 0;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(12, 10, 15, 0.72);
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: none;
+  animation: none;
+}
+
+.navbar.scrolled {
+  background: rgba(12, 10, 15, 0.95);
+  border-color: var(--line);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+
+.nav-menu {
+  color: var(--text);
+  gap: 26px;
+}
+
+.nav-link {
+  color: #e9dfcf;
+  padding: 10px 0;
+}
+
+.nav-link::after { display: none; }
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--secondary-color);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #120d07;
+  box-shadow: 0 12px 30px rgba(51, 214, 198, 0.18);
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(139, 125, 255, 0.22);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(51, 214, 198, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+.nav-menu .btn,
+.nav-menu .btn-primary {
+  min-height: 42px;
+  padding: 0 18px;
+  font-size: 0.95rem;
+}
+
+.nav-menu .btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #120d07;
+  border-radius: 999px;
+  box-shadow: 0 10px 26px rgba(51, 214, 198, 0.16);
+}
+
+.nav-menu .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(139, 125, 255, 0.22);
+}
+
+.hero,
+.services,
+.doctors,
+.appointment,
+.stats,
+.contact {
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  background:
+    linear-gradient(rgba(10, 8, 12, 0.55), rgba(10, 8, 12, 0.8)),
+    radial-gradient(circle at top center, rgba(51, 214, 198, 0.18), transparent 30%),
+    linear-gradient(120deg, #101018 0%, #0c0a0f 55%, #15112b 100%);
+}
+
+.hero-content h1,
+.hero-title {
+  color: var(--text);
+}
+
+.hero-subtitle {
+  color: var(--muted);
+}
+
+.hero-content {
+  padding-inline: 56px;
+}
+
+.services,
+.doctors,
+.contact {
+  background: transparent;
+}
+
+.service-card,
+.doctor-card,
+.appointment-form,
+.stat-item,
+.contact-item {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.service-card,
+.doctor-card,
+.stat-item,
+.contact-item {
+  border-radius: var(--radius-md);
+}
+
+.appointment-form {
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.services .section-title,
+.doctors .section-title,
+.appointment .section-title,
+.contact .section-title {
+  color: var(--text);
+}
+
+.services .section-subtitle,
+.doctors .section-subtitle,
+.appointment .section-subtitle,
+.contact .section-subtitle {
+  color: var(--muted);
+}
+
+.service-icon,
+.doctor-image {
+  background: rgba(51, 214, 198, 0.10);
+  border: 1px solid rgba(51, 214, 198, 0.22);
+}
+
+.stats {
+  background: transparent;
+  padding-top: 0;
+}
+
+.stat-number {
+  color: var(--primary-color);
+}
+
+.stat-label {
+  color: var(--muted);
+}
+
+.contact-item i {
+  color: var(--primary-color);
+}
+
+.contact-item a {
+  color: var(--primary-color);
+}
+
+.contact-item a:hover {
+  color: var(--secondary-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.appointment-form button {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #120d07;
+  border-radius: 999px;
+  box-shadow: 0 12px 30px rgba(51, 214, 198, 0.18);
+}
+
+.appointment-form button:hover {
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: #120d07;
+}
+
+.appointment {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(139, 125, 255, 0.16), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(51, 214, 198, 0.14), transparent 42%),
+    linear-gradient(135deg, rgba(12, 10, 15, 0.92), rgba(21, 17, 34, 0.92));
+}
+
+.appointment .section-title,
+.appointment .section-subtitle {
+  color: var(--text);
+}
+
+.appointment .form-group label {
+  color: var(--text);
+}
+
+.appointment .form-group input::placeholder,
+.appointment .form-group textarea::placeholder {
+  color: var(--muted);
+}
+
+.footer {
+  background: rgba(255, 255, 255, 0.01);
+  border-top: 1px solid var(--line);
+}
+
+.footer-section h3,
+.footer-section h4 {
+  color: var(--primary-color);
+}
+
+.footer-section a:hover {
+  color: var(--gold-strong);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.12s; }
+.delay-2 { transition-delay: 0.24s; }
+.delay-3 { transition-delay: 0.36s; }
+
+@media (max-width: 768px) {
+  .container {
+    width: min(1200px, calc(100% - 30px));
+  }
+}
