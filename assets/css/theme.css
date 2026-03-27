@@ -268,14 +268,13 @@ p { color: var(--muted); }
 }
 
 .appointment-form button {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: #6336b0;
   color: #120d07;
-  border-radius: 999px;
-  box-shadow: 0 12px 30px rgba(51, 214, 198, 0.18);
+  box-shadow: 0 12px 30px rgba(108, 41, 111, 0.18);
 }
 
 .appointment-form button:hover {
-  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  background: #531fac;
   color: #120d07;
 }
 
@@ -289,6 +288,7 @@ p { color: var(--muted); }
 .appointment .section-title,
 .appointment .section-subtitle {
   color: var(--text);
+  padding-bottom: 25px;
 }
 
 .appointment .form-group label {
@@ -298,6 +298,17 @@ p { color: var(--muted); }
 .appointment .form-group input::placeholder,
 .appointment .form-group textarea::placeholder {
   color: var(--muted);
+}
+
+.appointment .form-group input,
+.appointment .form-group select,
+.appointment .form-group textarea {
+  color: #ffffff;
+}
+
+.appointment .form-group select option {
+  color: #120d07;
+  background: #ffffff;
 }
 
 .footer {
