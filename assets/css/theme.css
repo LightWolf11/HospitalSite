@@ -99,7 +99,7 @@ p { color: var(--muted); }
   padding: 0 22px;
   border-radius: 0px;
   font-weight: 700;
-  background: #8a76ac;
+  background: #563c84;
   border-color: 1px solid var(--line);
   box-shadow: 0 12px 30px #4d2a89;
   transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
@@ -227,8 +227,8 @@ p { color: var(--muted); }
 
 .service-icon,
 .doctor-image {
-  background: rgba(51, 214, 198, 0.10);
-  border: 1px solid rgba(51, 214, 198, 0.22);
+  background: rgba(160, 46, 165, 0.1);
+  border: 1px solid rgba(96, 12, 89, 0.22);
 }
 
 .stats {
