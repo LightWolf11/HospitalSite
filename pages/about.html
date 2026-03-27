@@ -21,13 +21,14 @@
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../assets/images/logo.png" type="image/png">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand">
                 <a href="../index.html" class="logo">
-                    <i class="fas fa-hospital-user"></i> Больница "В последний путь"
+                    <img src="/assets/images/logo.png" width="50" height="50"> Больница "В последний путь"
                 </a>
                 <button class="hamburger" id="hamburgerBtn">
                     <span></span>
@@ -36,25 +37,37 @@
                 </button>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="../index.html" class="nav-link">Главная</a></li>
-                <li><a href="../index.html#services" class="nav-link">Услуги</a></li>
+                <li><a href="../index.html#home" class="nav-link">Главная</a></li>
+                <li><a href="services.html" class="nav-link">Услуги</a></li>
                 <li><a href="../index.html#doctors" class="nav-link">Врачи</a></li>
-                <li><a href="#" class="nav-link">О Нас</a></li>
                 <li><a href="../index.html#contact" class="nav-link">Контакты</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="about.html" class="nav-link">О нас</a></li>
+                <li><a href="../index.html#appointment" class="btn btn-primary">Записать приём</a></li>
             </ul>
         </div>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">О больнице "В последний путь"</h1>
+            <h1 class="hero-title">О больнице <br>"В последний путь"</h1>
             <p class="hero-subtitle">История успеха и служения здравоохранению</p>
             <p style="font-size: 18px; color: var(--muted); margin-top: 20px;">
                 Больница "В последний путь" - это современное медицинское учреждение с более чем 20-летней историей оказания качественного медицинского обслуживания населению.
             </p>
         </div>
         <div class="hero-image">
-            <img src="../assets/images/Hospital.jpg" alt="Здание больницы" class="hero-photo">
+            <div class="hero-slider" id="heroSlider">
+                <div class="hero-slide active" style="background-image: url('../assets/images/1.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('../assets/images/2.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('../assets/images/3.jpg');"></div>
+                <div class="hero-slider-overlay"></div>
+                <div class="hero-dots">
+                    <button class="hero-dot active" type="button" aria-label="Слайд 1"></button>
+                    <button class="hero-dot" type="button" aria-label="Слайд 2"></button>
+                    <button class="hero-dot" type="button" aria-label="Слайд 3"></button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -65,7 +78,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-heart"></i>
+                        <img src="../assets/images/about/1.jpg" alt="Забота о Пациентах" class="doctor-photo">
                     </div>
                     <h3>Забота о Пациентах</h3>
                     <p>Каждый пациент для нас является приоритетом. Мы стремимся оказать лучший уход и внимание в каждом контакте.</p>
@@ -73,7 +86,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-book"></i>
+                        <img src="../assets/images/about/2.jpg" alt="Постоянное Развитие" class="doctor-photo">
                     </div>
                     <h3>Постоянное Развитие</h3>
                     <p>Инвестирование в образование и развитие нашей команды - это залог успеха и качества обслуживания.</p>
@@ -81,7 +94,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-flask"></i>
+                        <img src="../assets/images/about/3.jpg" alt="Инновации" class="doctor-photo">
                     </div>
                     <h3>Инновации</h3>
                     <p>Использование последних технологий и методик в медицине для достижения лучших результатов лечения.</p>
@@ -89,7 +102,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-users"></i>
+                        <img src="../assets/images/about/4.jpg" alt="Командная Работа" class="doctor-photo">
                     </div>
                     <h3>Командная Работа</h3>
                     <p>Сотрудничество между специалистами разных направлений для комплексного колечения пациентов.</p>
@@ -97,7 +110,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-check-circle"></i>
+                        <img src="../assets/images/about/5.jpg" alt="Качество" class="doctor-photo">
                     </div>
                     <h3>Качество</h3>
                     <p>Высокие стандарты качества во всех аспектах нашей деятельности и обслуживания.</p>
@@ -105,7 +118,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <img src="../assets/images/about/6.jpg" alt="Безопасность" class="doctor-photo">
                     </div>
                     <h3>Безопасность</h3>
                     <p>Строгое соблюдение всех протоколов безопасности и конфиденциальности пациентов.</p>
@@ -116,7 +129,7 @@
 
     <section class="contact" style="padding: 80px 0; background: var(--light-color);">
         <div class="container">
-            <h2 class="section-title" style="color: var(--dark-color);">История Развития</h2>
+            <h2 class="section-title" style="color: fff;">История Развития</h2>
             
             <div style="margin-top: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
                 <div style="position: relative; padding-left: 40px; margin-bottom: 40px;">
@@ -148,21 +161,22 @@
 
     <section class="stats">
         <div class="container">
+            <h2 class="section-title">Статистика</h2>
+            <div class="stat-item">
+                <h3 class="stat-number">5000+</h3>
+                <p class="stat-label">Недовольных пациентов</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="stat-number">50+</h3>
+                <p class="stat-label">Квалифицированных врачей</p>
+            </div>
             <div class="stat-item">
                 <h3 class="stat-number">20+</h3>
                 <p class="stat-label">Лет опыта</p>
             </div>
             <div class="stat-item">
-                <h3 class="stat-number">50+</h3>
-                <p class="stat-label">Профессиональных врачей</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="stat-number">10000+</h3>
-                <p class="stat-label">Успешных процедур</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="stat-number">100%</h3>
-                <p class="stat-label">Удовлетворённых пациентов</p>
+                <h3 class="stat-number">24/7</h3>
+                <p class="stat-label">Неотложная помощь</p>
             </div>
         </div>
     </section>
