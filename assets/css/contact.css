@@ -127,7 +127,6 @@
     }
 }
 
-/* About page certifications: reuse contact styles but on light background */
 .services .contact-item {
     color: var(--text-color);
     border: 1px solid rgba(26, 46, 68, 0.12);
