@@ -71,7 +71,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 20px;
+    border-radius: 1px;
 }
 
 .service-card h3 {
