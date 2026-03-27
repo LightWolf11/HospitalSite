@@ -27,7 +27,7 @@
         <div class="container">
             <div class="navbar-brand">
                 <a href="#" class="logo">
-                    <img src="/assets/images/logo.jpg" width="40" height="40"> Больница "В последний путь"
+                    <img src="/assets/images/logo.png" width="50" height="50"> Больница "В последний путь"
                 </a>
                 <button class="hamburger" id="hamburgerBtn">
                     <span></span>
@@ -48,14 +48,25 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1 class="hero-title">Ваше здоровье - наш приоритет</h1>
-            <p class="hero-subtitle">Современное медицинское обслуживание высочайшего качества</p>
+            <p class="hero-subtitle"><br>Современное медицинское обслуживание высочайшего качества</p>
             <div class="hero-buttons">
+                
                 <a href="#appointment" class="btn btn-primary">Записаться на приём</a>
                 <a href="pages/services.html" class="btn btn-secondary">Узнать о услугах</a>
             </div>
         </div>
         <div class="hero-image">
-            <img src="assets/images/Hospital.jpg" alt="Здание больницы" class="hero-photo">
+            <div class="hero-slider" id="heroSlider">
+                <div class="hero-slide active" style="background-image: url('assets/images/1.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('assets/images/2.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('assets/images/3.jpg');"></div>
+                <div class="hero-slider-overlay"></div>
+                <div class="hero-dots">
+                    <button class="hero-dot active" type="button" aria-label="Слайд 1"></button>
+                    <button class="hero-dot" type="button" aria-label="Слайд 2"></button>
+                    <button class="hero-dot" type="button" aria-label="Слайд 3"></button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -66,42 +77,42 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/Kardio.jpg" alt="Кардиология" class="doctor-photo">
+                        <img src="assets/images/services/Kardio.jpg" alt="Кардиология" class="doctor-photo">
                     </div>
                     <h3>Кардиология</h3>
                     <p>Диагностика и лечение заболеваний сердечно-сосудистой системы</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/Pyls.jpg" alt="Пульмонология" class="doctor-photo">
+                        <img src="assets/images/services/Pyls.jpg" alt="Пульмонология" class="doctor-photo">
                     </div>
                     <h3>Пульмонология</h3>
                     <p>Лечение заболеваний дыхательной системы и легких</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/Stomat.jpg" alt="Стоматология" class="doctor-photo">
+                        <img src="assets/images/services/Stomat.jpg" alt="Стоматология" class="doctor-photo">
                     </div>
                     <h3>Стоматология</h3>
                     <p>Профилактика и лечение заболеваний зубов и полости рта</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/Oftalm.jpg" alt="Офтальмология" class="doctor-photo">
+                        <img src="assets/images/services/Oftalm.jpg" alt="Офтальмология" class="doctor-photo">
                     </div>
                     <h3>Офтальмология</h3>
                     <p>Диагностика и коррекция нарушений зрения</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/Nevro.jpg" alt="Неврология" class="doctor-photo">
+                        <img src="assets/images/services/Nevro.jpg" alt="Неврология" class="doctor-photo">
                     </div>
                     <h3>Неврология</h3>
                     <p>Лечение заболеваний нервной системы</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/Orto.jpg" alt="Ортопедия" class="doctor-photo">
+                        <img src="assets/images/services/Orto.jpg" alt="Ортопедия" class="doctor-photo">
                     </div>
                     <h3>Ортопедия</h3>
                     <p>Диагностика и лечение заболеваний костно-мышечной системы</p>
@@ -117,7 +128,7 @@
             <div class="doctors-grid">
                 <div class="doctor-card">
                     <div class="doctor-image">
-                        <img src="assets/images/Gorov.jpg" alt="Горов Дмитрий" class="doctor-photo">
+                        <img src="assets/images/doctors/Gorov.jpg" alt="Горов Дмитрий" class="doctor-photo">
                     </div>
                     <h3>Горов Дмитрий</h3>
                     <p class="specialty">Кардиолог</p>
@@ -129,7 +140,7 @@
                 </div>
                 <div class="doctor-card">
                     <div class="doctor-image">
-                        <img src="assets/images/Kasperovich.jpg" alt="Касперович Артем" class="doctor-photo">
+                        <img src="assets/images/doctors/Kasperovich.jpg" alt="Касперович Артем" class="doctor-photo">
                     </div>
                     <h3>Касперович Артем</h3>
                     <p class="specialty">Стоматолог</p>
@@ -141,7 +152,7 @@
                 </div>
                 <div class="doctor-card">
                     <div class="doctor-image">
-                        <img src="assets/images/Prokydin.jpg" alt="Прокудин Арсений" class="doctor-photo">
+                        <img src="assets/images/doctors/Prokydin.jpg" alt="Прокудин Арсений" class="doctor-photo">
                     </div>
                     <h3>Прокудин Арсений</h3>
                     <p class="specialty">Невролог</p>
@@ -153,7 +164,7 @@
                 </div>
                 <div class="doctor-card">
                     <div class="doctor-image">
-                        <img src="assets/images/Greben.jpg" alt="Гребень Егор" class="doctor-photo">
+                        <img src="assets/images/doctors/Greben.jpg" alt="Гребень Егор" class="doctor-photo">
                     </div>
                     <h3>Гребень Егор</h3>
                     <p class="specialty">Окулист</p>
