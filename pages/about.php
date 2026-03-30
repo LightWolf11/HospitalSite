@@ -1,4 +1,17 @@
 <?php
+declare(strict_types=1);
+
+require_once dirname(__DIR__) . '/includes/bootstrap.php';
+require_once dirname(__DIR__) . '/includes/paths.php';
+
+$pageTitle = 'О Нас - Больница "В последний путь"';
+$NAV_BASE = '..';
+$ASSETS = '../assets/';
+$extraCss = ['hero.css', 'services.css', 'stats.css', 'contact.css'];
+$home_url = public_href('index.php', $NAV_BASE);
+$careers_url = public_href('pages/careers.php', $NAV_BASE);
+
+require_once dirname(__DIR__) . '/includes/public_head.php';
 
 ?>
 
