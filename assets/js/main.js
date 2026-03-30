@@ -16,6 +16,41 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    document.querySelectorAll('.nav-dropdown-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var dd = btn.closest('.nav-dropdown');
+            var willOpen = !dd.classList.contains('is-open');
+            document.querySelectorAll('.nav-dropdown').forEach(function(d) {
+                d.classList.remove('is-open');
+                var t = d.querySelector('.nav-dropdown-toggle');
+                if (t) t.setAttribute('aria-expanded', 'false');
+            });
+            if (willOpen) {
+                dd.classList.add('is-open');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    document.addEventListener('click', function() {
+        document.querySelectorAll('.nav-dropdown.is-open').forEach(function(dd) {
+            dd.classList.remove('is-open');
+            var t = dd.querySelector('.nav-dropdown-toggle');
+            if (t) t.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key !== 'Escape') return;
+        document.querySelectorAll('.nav-dropdown.is-open').forEach(function(dd) {
+            dd.classList.remove('is-open');
+            var t = dd.querySelector('.nav-dropdown-toggle');
+            if (t) t.setAttribute('aria-expanded', 'false');
+        });
+    });
+
     const scrollToTopBtn = document.getElementById('scrollToTop');
     if (scrollToTopBtn) {
         window.addEventListener('scroll', function() {

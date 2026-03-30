@@ -21,9 +21,45 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+const API = 'api/index.php';
+
 document.addEventListener('DOMContentLoaded', function() {
     const appointmentForm = document.getElementById('appointmentForm');
-    
+    const doctorSelect = document.getElementById('doctor_profile_id');
+    const guestHint = document.getElementById('appointmentGuestHint');
+
+    if (doctorSelect) {
+        fetch(API + '?action=doctors_options', { credentials: 'same-origin' })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                if (!data.ok || !data.doctors) return;
+                doctorSelect.innerHTML = '<option value="">Выберите врача</option>' +
+                    data.doctors.map(function (d) {
+                        return '<option value="' + d.id + '">' +
+                            escapeHtml(d.full_name) + ' — ' + escapeHtml(d.specialty || '') +
+                            '</option>';
+                    }).join('');
+            })
+            .catch(function () {});
+    }
+
+    fetch(API + '?action=me', { credentials: 'same-origin' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+            var u = data.user;
+            var canBook = u && u.role !== 'doctor' && (
+                u.role === 'patient' || u.role === 'admin' || Number(u.is_admin) === 1
+            );
+            if (data.ok && canBook) {
+                if (guestHint) guestHint.style.display = 'none';
+                if (appointmentForm) appointmentForm.style.display = '';
+            } else {
+                if (guestHint) guestHint.style.display = 'block';
+                if (appointmentForm) appointmentForm.style.display = 'none';
+            }
+        })
+        .catch(function () {});
+
     if (appointmentForm) {
         const dateInput = document.getElementById('date');
         if (dateInput) {
@@ -62,8 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-
-        const formFields = document.querySelectorAll('.appointment-form input, .appointment-form select, .appointment-form textarea');
+        const formFields = document.querySelectorAll('#appointmentForm input, #appointmentForm select, #appointmentForm textarea');
         formFields.forEach(field => {
             field.addEventListener('blur', function() {
                 validateField(this);
@@ -78,10 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
 
             const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                specialty: document.getElementById('specialty').value,
+                doctor_profile_id: document.getElementById('doctor_profile_id').value,
                 date: document.getElementById('date').value,
                 time: document.getElementById('time').value,
                 message: document.getElementById('message').value
@@ -92,28 +124,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            console.log('Данные формы:', formData);
-            showMessage('✓ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в течение 24 часов.', 'success');
-
-            appointmentForm.reset();
+            fetch(API + '?action=appointment_create', {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+                .then(function (r) { return r.json().then(function (body) { return { status: r.status, body: body }; }); })
+                .then(function (res) {
+                    if (res.body.ok) {
+                        showMessage('✓ Запись создана. Проверьте уведомления в личном кабинете.', 'success');
+                        appointmentForm.reset();
+                    } else if (res.status === 401) {
+                        showMessage('Войдите в личный кабинет пациента, чтобы записаться.', 'error');
+                    } else {
+                        showMessage(res.body.error || 'Ошибка', 'error');
+                    }
+                })
+                .catch(function () {
+                    showMessage('Ошибка сети', 'error');
+                });
 
             setTimeout(() => {
                 const formMessage = document.getElementById('formMessage');
                 if (formMessage) formMessage.style.display = 'none';
-            }, 4000);
+            }, 6000);
         });
     }
 });
 
-
+function escapeHtml(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+}
 
 function validateForm(data) {
-    if (!data.name || data.name.trim().length < 2) return false;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!data.email || !emailRegex.test(data.email)) return false;
-    const phoneRegex = /^[\d\s\-\(\)\+]*$/;
-    if (!data.phone || data.phone.length < 10 || !phoneRegex.test(data.phone)) return false;
-    if (!data.specialty) return false;
+    if (!data.doctor_profile_id) return false;
     if (!data.date) return false;
     if (!data.time) return false;
     return true;
