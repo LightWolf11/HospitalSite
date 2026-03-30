@@ -229,14 +229,25 @@ if (isset($_GET['edit'])) {
     }
 }
 
-$usersList = $pdo->query(
+$usersPerPage = 10;
+$usersPage = max(1, (int) ($_GET['page'] ?? 1));
+$usersTotal = (int) $pdo->query('SELECT COUNT(*) FROM users')->fetchColumn();
+$usersTotalPages = max(1, (int) ceil($usersTotal / $usersPerPage));
+if ($usersPage > $usersTotalPages) {
+    $usersPage = $usersTotalPages;
+}
+$usersOffset = ($usersPage - 1) * $usersPerPage;
+
+$stUsers = $pdo->prepare(
     "SELECT u.id, u.email, u.full_name, u.phone, u.role, u.is_admin, u.doctor_profile_id,
             d.full_name AS doctor_name
      FROM users u
      LEFT JOIN doctor_profiles d ON d.id = u.doctor_profile_id
-     WHERE u.role = 'doctor' OR COALESCE(u.is_admin, 0) = 1
-     ORDER BY (u.role = 'doctor') DESC, COALESCE(u.is_admin, 0) DESC, u.id DESC"
-)->fetchAll();
+     ORDER BY u.id DESC
+     LIMIT {$usersPerPage} OFFSET {$usersOffset}"
+);
+$stUsers->execute();
+$usersList = $stUsers->fetchAll();
 
 $doctorProfiles = $pdo->query(
     "SELECT id, full_name, specialty, user_id
@@ -252,7 +263,7 @@ $editPrevDpId = $editUser && !empty($editUser['doctor_profile_id']) ? (int) $edi
     <div class="container" style="max-width: 900px;">
         <h1 class="section-title" style="margin-bottom: .4rem;">Пользователи</h1>
         <p class="section-subtitle" style="margin-bottom: 1.25rem;">
-            Список врачей и пользователей с админ-правами. Можно выдать/снять админку, отредактировать или удалить пользователя.
+            Список всех пользователей. Можно выдать/снять админку, отредактировать или удалить пользователя.
         </p>
 
         <?php if ($message): ?><p class="app-msg ok"><?= h($message) ?></p><?php endif; ?>
@@ -313,14 +324,16 @@ $editPrevDpId = $editUser && !empty($editUser['doctor_profile_id']) ? (int) $edi
                                                 <input type="hidden" name="action" value="toggle_admin">
                                                 <input type="hidden" name="id" value="<?= (int) $r['id'] ?>">
                                                 <input type="hidden" name="make_admin" value="<?= $isAdminNow ? 0 : 1 ?>">
+                                                <input type="hidden" name="page" value="<?= (int) $usersPage ?>">
                                                 <button type="submit" class="btn-admin btn-admin--muted" <?= $canToggle ? '' : 'disabled' ?>>
                                                     <?= $isAdminNow ? 'Снять админку' : 'Дать админку' ?>
                                                 </button>
                                             </form>
-                                            <a class="btn-admin" href="users.php?edit=<?= (int) $r['id'] ?>">Редактировать</a>
+                                            <a class="btn-admin" href="users.php?edit=<?= (int) $r['id'] ?>&page=<?= (int) $usersPage ?>">Редактировать</a>
                                             <form method="post" style="display:inline;" onsubmit="return confirm('Удалить пользователя?');">
                                                 <input type="hidden" name="action" value="delete_user">
                                                 <input type="hidden" name="id" value="<?= (int) $r['id'] ?>">
+                                                <input type="hidden" name="page" value="<?= (int) $usersPage ?>">
                                                 <button type="submit" class="btn-admin btn-admin--danger" <?= $isSuper ? 'disabled' : '' ?>>
                                                     Удалить
                                                 </button>
@@ -332,6 +345,17 @@ $editPrevDpId = $editUser && !empty($editUser['doctor_profile_id']) ? (int) $edi
                         </tbody>
                     </table>
                 </div>
+                <?php if ($usersTotalPages > 1): ?>
+                    <div style="display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;margin-top:.85rem;">
+                        <?php for ($p = 1; $p <= $usersTotalPages; $p++): ?>
+                            <?php if ($p === $usersPage): ?>
+                                <span class="btn-admin" style="background:#4a2f8f;"><?= (int) $p ?></span>
+                            <?php else: ?>
+                                <a class="btn-admin btn-admin--muted" href="users.php?page=<?= (int) $p ?>"><?= (int) $p ?></a>
+                            <?php endif; ?>
+                        <?php endfor; ?>
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
 

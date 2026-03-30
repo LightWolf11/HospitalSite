@@ -57,10 +57,21 @@ $st->execute([(int) $user['id']]);
 $appointments = $st->fetchAll();
 
 $scope = notifications_type_filter_sql($user);
+$notifPerPage = 10;
+$notifPage = max(1, (int) ($_GET['npage'] ?? 1));
+$countSql = 'SELECT COUNT(*) FROM notifications WHERE user_id = ?' . $scope;
+$countSt = $pdo->prepare($countSql);
+$countSt->execute([(int) $user['id']]);
+$notifTotal = (int) $countSt->fetchColumn();
+$notifTotalPages = max(1, (int) ceil($notifTotal / $notifPerPage));
+if ($notifPage > $notifTotalPages) {
+    $notifPage = $notifTotalPages;
+}
+$notifOffset = ($notifPage - 1) * $notifPerPage;
 $ns = $pdo->prepare(
     'SELECT id, title, body, read_at, created_at FROM notifications WHERE user_id = ?'
     . $scope
-    . ' ORDER BY id DESC LIMIT 30'
+    . " ORDER BY id DESC LIMIT {$notifPerPage} OFFSET {$notifOffset}"
 );
 $ns->execute([(int) $user['id']]);
 $notifications = $ns->fetchAll();
@@ -130,6 +141,17 @@ require dirname(__DIR__) . '/includes/partials/public_nav.php';
                             <small class="notif-date"><?= h($n['created_at']) ?></small>
                         </div>
                     <?php endforeach; ?>
+                    <?php if ($notifTotalPages > 1): ?>
+                        <div style="display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;margin-top:.85rem;">
+                            <?php for ($p = 1; $p <= $notifTotalPages; $p++): ?>
+                                <?php if ($p === $notifPage): ?>
+                                    <span class="btn btn-primary" style="padding:.35rem .7rem;pointer-events:none;"><?= (int) $p ?></span>
+                                <?php else: ?>
+                                    <a class="btn btn-secondary" style="padding:.35rem .7rem;" href="index.php?npage=<?= (int) $p ?>#cabinet-notifications"><?= (int) $p ?></a>
+                                <?php endif; ?>
+                            <?php endfor; ?>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
 

@@ -116,7 +116,7 @@ p { color: var(--muted); }
   padding: 0 22px;
   border-radius: 0px;
   font-weight: 700;
-  background: #563c84;
+  background: #250e4e;
   border-color: 1px solid var(--line);
   box-shadow: 0 12px 30px #4d2a89;
   transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
@@ -306,6 +306,15 @@ p { color: var(--muted); }
 .appointment .section-subtitle {
   color: var(--text);
   padding-bottom: 25px;
+}
+
+.appointment #appointmentGuestHint a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.appointment #appointmentGuestHint a:hover {
+  color: var(--primary-color);
 }
 
 .appointment .form-group label {

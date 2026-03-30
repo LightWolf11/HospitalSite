@@ -71,8 +71,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$feedbackList = $pdo->query('SELECT * FROM feedback_messages ORDER BY id DESC')->fetchAll();
-$teamList = $pdo->query('SELECT * FROM team_applications ORDER BY id DESC')->fetchAll();
+$perPage = 10;
+$page = max(1, (int) ($_GET['page'] ?? 1));
+$feedbackTotal = (int) $pdo->query('SELECT COUNT(*) FROM feedback_messages')->fetchColumn();
+$teamTotal = (int) $pdo->query('SELECT COUNT(*) FROM team_applications')->fetchColumn();
+$activeTotal = $tab === 'feedback' ? $feedbackTotal : $teamTotal;
+$totalPages = max(1, (int) ceil($activeTotal / $perPage));
+if ($page > $totalPages) {
+    $page = $totalPages;
+}
+$offset = ($page - 1) * $perPage;
+
+$stFb = $pdo->prepare("SELECT * FROM feedback_messages ORDER BY id DESC LIMIT {$perPage} OFFSET {$offset}");
+$stFb->execute();
+$feedbackList = $stFb->fetchAll();
+
+$stTm = $pdo->prepare("SELECT * FROM team_applications ORDER BY id DESC LIMIT {$perPage} OFFSET {$offset}");
+$stTm->execute();
+$teamList = $stTm->fetchAll();
 $viewId = isset($_GET['view']) ? (int) $_GET['view'] : 0;
 $viewFeedback = null;
 $viewTeam = null;
@@ -110,8 +126,8 @@ require dirname(__DIR__) . '/includes/partials/admin_subnav.php';
     <?php if ($error): ?><p class="app-msg err"><?= h($error) ?></p><?php endif; ?>
 
     <div class="tabs-admin">
-        <a class="<?= $tab === 'feedback' ? 'is-active' : '' ?>" href="notifications.php?tab=feedback"><span class="admin-tag admin-tag--fb">Обратная связь</span> Обращения</a>
-        <a class="<?= $tab === 'team' ? 'is-active' : '' ?>" href="notifications.php?tab=team"><span class="admin-tag admin-tag--tm">Анкета</span> В команду</a>
+        <a class="<?= $tab === 'feedback' ? 'is-active' : '' ?>" href="notifications.php?tab=feedback&page=1"><span class="admin-tag admin-tag--fb">Обратная связь</span> Обращения</a>
+        <a class="<?= $tab === 'team' ? 'is-active' : '' ?>" href="notifications.php?tab=team&page=1"><span class="admin-tag admin-tag--tm">Анкета</span> В команду</a>
     </div>
 
     <?php if ($tab === 'feedback'): ?>
@@ -129,11 +145,22 @@ require dirname(__DIR__) . '/includes/partials/admin_subnav.php';
                         $more = function_exists('mb_strlen') ? (mb_strlen($r['message']) > 80) : (strlen($r['message']) > 80);
                         echo h($prev) . ($more ? '…' : '');
                     ?></td>
-                    <td><a class="row-link" href="notifications.php?tab=feedback&view=<?= (int) $r['id'] ?>">Открыть</a></td>
+                    <td><a class="row-link" href="notifications.php?tab=feedback&page=<?= (int) $page ?>&view=<?= (int) $r['id'] ?>">Открыть</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
+        <?php if ($totalPages > 1): ?>
+            <div style="display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;margin-top:.85rem;">
+                <?php for ($p = 1; $p <= $totalPages; $p++): ?>
+                    <?php if ($p === $page): ?>
+                        <span class="btn-admin" style="background:#4a2f8f;"><?= (int) $p ?></span>
+                    <?php else: ?>
+                        <a class="btn-admin btn-admin--muted" href="notifications.php?tab=feedback&page=<?= (int) $p ?>"><?= (int) $p ?></a>
+                    <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+        <?php endif; ?>
         <?php if ($viewFeedback): ?>
             <div class="admin-detail">
                 <p><span class="admin-tag admin-tag--fb">обратная связь</span> <strong><?= h($viewFeedback['name']) ?></strong> &lt;<?= h($viewFeedback['email']) ?>&gt;</p>
@@ -164,11 +191,22 @@ require dirname(__DIR__) . '/includes/partials/admin_subnav.php';
                     <td><span class="admin-tag admin-tag--tm">анкета</span></td>
                     <td><?= h($r['full_name']) ?><br><small><?= h($r['email']) ?></small></td>
                     <td><?= h($r['position']) ?></td>
-                    <td><a class="row-link" href="notifications.php?tab=team&view=<?= (int) $r['id'] ?>">Открыть</a></td>
+                    <td><a class="row-link" href="notifications.php?tab=team&page=<?= (int) $page ?>&view=<?= (int) $r['id'] ?>">Открыть</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
+        <?php if ($totalPages > 1): ?>
+            <div style="display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;margin-top:.85rem;">
+                <?php for ($p = 1; $p <= $totalPages; $p++): ?>
+                    <?php if ($p === $page): ?>
+                        <span class="btn-admin" style="background:#4a2f8f;"><?= (int) $p ?></span>
+                    <?php else: ?>
+                        <a class="btn-admin btn-admin--muted" href="notifications.php?tab=team&page=<?= (int) $p ?>"><?= (int) $p ?></a>
+                    <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+        <?php endif; ?>
         <?php if ($viewTeam): ?>
             <div class="admin-detail">
                 <p><span class="admin-tag admin-tag--tm">анкета</span> <strong><?= h($viewTeam['full_name']) ?></strong></p>

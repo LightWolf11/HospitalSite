@@ -35,6 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $photoPath = upload_image_or_throw($photoFile, 'doctors', $config);
             }
             if ($action === 'create') {
+                if ($loginEmail !== '' && !filter_var($loginEmail, FILTER_VALIDATE_EMAIL)) {
+                    throw new RuntimeException('Email для входа указан некорректно');
+                }
                 $pdo->beginTransaction();
                 $st = $pdo->prepare(
                     'INSERT INTO doctor_profiles (full_name, specialty, bio, photo_path, contact_email, contact_phone, sort_order, is_active)
@@ -42,7 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 );
                 $st->execute([$fullName, $specialty, $bio, $photoPath, $contactEmail, $contactPhone, $sortOrder, $isActive]);
                 $newId = (int) $pdo->lastInsertId();
-                $bindEmail = $contactEmail !== '' ? $contactEmail : $loginEmail;
+                // Приоритет email для входа, чтобы создание учётной записи врача не зависело от contact_email.
+                $bindEmail = $loginEmail !== '' ? $loginEmail : $contactEmail;
                 $bindEmail = strtolower(trim($bindEmail));
                 if ($bindEmail !== '' && filter_var($bindEmail, FILTER_VALIDATE_EMAIL)) {
                     $st = $pdo->prepare('SELECT id, doctor_profile_id FROM users WHERE email = ?');

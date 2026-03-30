@@ -690,7 +690,6 @@
 .admin-panel .admin-form-block input,
 .admin-panel .admin-form-block textarea,
 .admin-panel .admin-form-block select {
-    width: 100%;
     max-width: 480px;
     padding: 0.5rem;
     border: 1px solid var(--line);
