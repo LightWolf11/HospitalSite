@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require_once dirname(__DIR__) . '/paths.php';
+require_once dirname(__DIR__) . '../paths.php';
 
 
 if (!isset($NAV_BASE)) {
@@ -10,9 +10,9 @@ if (!isset($NAV_BASE)) {
 
 $cu = current_user($pdo);
 $home = public_href('index.php', $NAV_BASE);
-$services = public_href('pages/services.php', $NAV_BASE);
-$faq = public_href('pages/faq.php', $NAV_BASE);
-$about = public_href('pages/about.php', $NAV_BASE);
+$services = public_href('../pages/services.php', $NAV_BASE);
+$faq = public_href('../pages/faq.php', $NAV_BASE);
+$about = public_href('../pages/about.php', $NAV_BASE);
 $cabinetLogin = public_href('cabinet/login.php', $NAV_BASE);
 $cabinetIdx = public_href('cabinet/index.php', $NAV_BASE);
 $cabinetReg = public_href('cabinet/register.php', $NAV_BASE);
