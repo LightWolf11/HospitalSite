@@ -81,7 +81,6 @@
 .app-page .app-card .appointment-form .form-group input,
 .app-page .app-card .appointment-form .form-group select,
 .app-page .app-card .appointment-form .form-group textarea {
-    width: 100%;
     max-width: 100%;
     min-width: 0;
     box-sizing: border-box;

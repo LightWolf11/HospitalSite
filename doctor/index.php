@@ -56,7 +56,7 @@ require dirname(__DIR__) . '/includes/partials/public_nav.php';
             <p class="section-subtitle"><?= h((string) $docName) ?></p>
             <?php foreach ($rows as $r): ?>
                 <div class="app-card" style="margin-bottom: 1.25rem;">
-                    <h2 style="font-size: 1.1rem; margin-top: 0; color: var(--dark-color);"><?= h($r['scheduled_at']) ?> · <?= h($r['patient_name']) ?></h2>
+                    <h2 style="font-size: 1.1rem; margin-top: 0; color: #fff"><?= h($r['scheduled_at']) ?> · <?= h($r['patient_name']) ?></h2>
                     <p><small>Email:</small> <?= h($r['patient_email']) ?> · <small>Тел:</small> <?= h($r['patient_phone']) ?></p>
                     <?php if ($r['patient_note']): ?>
                         <p style="white-space:pre-wrap;"><small>Комментарий пациента:</small><br><?= h($r['patient_note']) ?></p>
