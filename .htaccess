@@ -1,0 +1,12 @@
+DirectoryIndex index.php index.html
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    RewriteRule ^index\.html$ index.php [L,R=301]
+    RewriteRule ^pages/faq\.html$ pages/faq.php [L,R=301]
+    RewriteRule ^pages/careers\.html$ pages/careers.php [L,R=301]
+    RewriteRule ^pages/about\.html$ pages/about.php [L,R=301]
+</IfModule>
+ErrorDocument 404 /404.php
