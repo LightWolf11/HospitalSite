@@ -1,0 +1,52 @@
+.app-page {
+    padding: 100px 0 80px;
+    min-height: 60vh;
+    background: transparent;
+}
+
+.app-page .container {
+    max-width: 920px;
+}
+
+.app-page .section-title,
+.app-page h1.section-title {
+    color: var(--text);
+}
+
+.app-page .section-subtitle {
+    color: var(--muted);
+}
+
+.app-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 1.75rem 2rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    color: var(--text);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.app-card h1,
+.app-card h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--text);
+    margin-top: 0;
+}
+
+.app-page .app-card .form-group label {
+    color: var(--muted);
+}
+
+.app-page .app-card p {
+    color: var(--muted);
+}
+
+.app-page .app-card a {
+    color: var(--secondary-color);
+}
+
+.app-page .app-card a:hover {
+    color: var(--text);
+}
