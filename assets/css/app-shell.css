@@ -508,3 +508,323 @@
     color: var(--muted);
     line-height: 1.4;
 }
+
+@media (max-width: 600px) {
+    .toast-stack {
+        top: 72px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+
+    .toast-item {
+        transform: translateY(-16px);
+    }
+
+    .toast-item.is-visible {
+        transform: translateY(0);
+    }
+
+    .nav-notif-panel {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.admin-subnav {
+    background: rgba(26, 46, 75, 0.95);
+    box-shadow: var(--shadow);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.admin-subnav .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.75rem;
+    padding: 0.55rem 20px;
+    min-height: 48px;
+}
+
+.admin-subnav-link {
+    color: #e8f5e9;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 0.35rem 0.65rem;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.admin-subnav-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+.admin-subnav-link.is-active {
+    background: rgba(76, 175, 80, 0.35);
+    color: #fff;
+}
+
+.admin-subnav-link--ghost {
+    font-weight: 500;
+    opacity: 0.85;
+}
+
+.admin-subnav-spacer {
+    flex: 1;
+    min-width: 8px;
+}
+
+.admin-badge {
+    display: inline-block;
+    margin-left: 0.35rem;
+    padding: 0.1rem 0.45rem;
+    font-size: 0.72rem;
+    background: #c62828;
+    color: #fff;
+    border-radius: 999px;
+    vertical-align: middle;
+}
+
+.admin-edit-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.admin-form-col {
+    min-width: 0;
+}
+
+.admin-preview-col {
+    position: sticky;
+    top: 88px;
+}
+
+.admin-preview-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0 0 0.65rem;
+}
+
+.admin-panel .admin-preview-card.doctor-card,
+.admin-panel .admin-preview-card.service-card {
+    margin: 0;
+    animation: none;
+    max-width: 100%;
+}
+
+.admin-panel .admin-preview-card .social-links .social-icon {
+    pointer-events: none;
+}
+
+.admin-panel .admin-preview-service-text {
+    display: block !important;
+    margin-top: 10px;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+@media (max-width: 960px) {
+    .admin-edit-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-preview-col {
+        position: static;
+    }
+}
+
+.admin-panel .app-card h2 {
+    font-size: 1.15rem;
+}
+
+.admin-panel table.admin-data {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    font-size: 0.9rem;
+    border: 1px solid var(--line);
+    color: var(--text);
+}
+
+.admin-panel table.admin-data th,
+.admin-panel table.admin-data td {
+    padding: 0.65rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+
+.admin-panel table.admin-data th {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+}
+
+.admin-panel table.admin-data td {
+    color: var(--muted);
+}
+
+.admin-panel .admin-form-block {
+    background: var(--bg-card);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    color: var(--text);
+}
+
+.admin-panel .admin-form-block label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.admin-panel .admin-form-block input,
+.admin-panel .admin-form-block textarea,
+.admin-panel .admin-form-block select {
+    width: 100%;
+    max-width: 480px;
+    padding: 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+}
+
+.admin-panel .btn-admin {
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.admin-panel .btn-admin--danger {
+    background: #c62828;
+}
+
+.admin-panel .btn-admin--muted {
+    background: #757575;
+}
+
+.admin-panel img.thumb {
+    max-height: 48px;
+    border-radius: 8px;
+    vertical-align: middle;
+}
+
+.admin-panel .tabs-admin {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.admin-panel .tabs-admin a {
+    padding: 0.5rem 1rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+}
+
+.admin-panel .tabs-admin a.is-active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.admin-panel .admin-detail {
+    background: var(--bg-card);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    margin-top: 1rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    color: var(--text);
+}
+
+.admin-panel .admin-detail textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 0.65rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    box-sizing: border-box;
+    margin-top: 0.35rem;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+}
+
+.admin-panel tr.row-unread {
+    font-weight: 600;
+    background: rgba(255, 193, 7, 0.08);
+}
+
+.admin-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    color: #fff;
+    margin-right: 0.35rem;
+}
+
+.admin-tag--fb {
+    background: #5c6bc0;
+}
+
+.admin-tag--tm {
+    background: #00897b;
+}
+
+.navbar .logo {
+    max-height: 64px !important;
+    overflow: hidden !important;
+    font-size: 11px !important;
+    line-height: 1.15 !important;
+}
+
+.navbar .logo .logo-text {
+    max-height: 64px !important;
+    overflow: hidden !important;
+    line-height: 1.15 !important;
+}
+
+.navbar .logo .logo-title {
+    font-family: Inter, system-ui, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+}
+
+.navbar .logo .logo-sub {
+    font-family: Inter, system-ui, sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+}
