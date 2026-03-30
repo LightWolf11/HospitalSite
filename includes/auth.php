@@ -71,3 +71,12 @@ function logout_user(): void
     }
     session_destroy();
 }
+
+function notifications_type_filter_sql(array $u): string
+{
+    if (user_can_access_admin($u)) {
+        return '';
+    }
+
+    return " AND type IN ('appointment','reminder')";
+}
