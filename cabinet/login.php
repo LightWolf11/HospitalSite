@@ -4,22 +4,37 @@ declare(strict_types=1);
 require_once dirname(__DIR__) . '/includes/bootstrap.php';
 
 $cu = current_user($pdo);
-if ($cu && user_can_access_patient_area($cu)) {
-    header('Location: index.php');
-    exit;
+if ($cu) {
+    $role = (string) ($cu['role'] ?? '');
+    if ($role === 'doctor' && !empty($cu['doctor_profile_id'])) {
+        header('Location: ../doctor/index.php');
+        exit;
+    }
+    if (user_can_access_patient_area($cu)) {
+        header('Location: index.php');
+        exit;
+    }
 }
 
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim((string) ($_POST['email'] ?? ''));
     $pass = (string) ($_POST['password'] ?? '');
-    $st = $pdo->prepare('SELECT id, password_hash, role, is_admin FROM users WHERE email = ?');
+    $st = $pdo->prepare('SELECT id, password_hash, role, is_admin, doctor_profile_id FROM users WHERE email = ?');
     $st->execute([$email]);
     $u = $st->fetch();
-    if ($u && password_verify($pass, $u['password_hash']) && user_can_access_patient_area($u)) {
-        login_user((int) $u['id']);
-        header('Location: index.php');
-        exit;
+    if ($u && password_verify($pass, (string) $u['password_hash'])) {
+        $role = (string) ($u['role'] ?? '');
+        if ($role === 'doctor' && !empty($u['doctor_profile_id'])) {
+            login_user((int) $u['id']);
+            header('Location: ../doctor/index.php');
+            exit;
+        }
+        if (user_can_access_patient_area($u)) {
+            login_user((int) $u['id']);
+            header('Location: index.php');
+            exit;
+        }
     }
     $error = 'Неверный email или пароль';
 }
