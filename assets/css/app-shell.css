@@ -50,3 +50,135 @@
 .app-page .app-card a:hover {
     color: var(--text);
 }
+
+.app-page .app-card .cabinet-form,
+.app-page .app-card .appointment-form {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+.app-page .app-card .cabinet-form {
+    max-width: 480px;
+}
+
+.app-page .app-card .appointment-form {
+    max-width: 100%;
+}
+
+.app-page .app-card .cabinet-form .form-group label,
+.app-page .app-card .appointment-form .form-group label {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.app-page .app-card .cabinet-form .form-group input,
+.app-page .app-card .cabinet-form .form-group select,
+.app-page .app-card .cabinet-form .form-group textarea,
+.app-page .app-card .appointment-form .form-group input,
+.app-page .app-card .appointment-form .form-group select,
+.app-page .app-card .appointment-form .form-group textarea {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--line);
+    box-shadow: none;
+}
+
+.app-page .app-card .cabinet-form .form-group input:focus,
+.app-page .app-card .cabinet-form .form-group select:focus,
+.app-page .app-card .cabinet-form .form-group textarea:focus,
+.app-page .app-card .appointment-form .form-group input:focus,
+.app-page .app-card .appointment-form .form-group select:focus,
+.app-page .app-card .appointment-form .form-group textarea:focus {
+    outline: none;
+    border-color: rgba(139, 125, 255, 0.55);
+    box-shadow: 0 0 0 3px rgba(139, 125, 255, 0.15);
+}
+
+.app-page .app-card .cabinet-form .form-group input::placeholder,
+.app-page .app-card .cabinet-form .form-group textarea::placeholder,
+.app-page .app-card .appointment-form .form-group input::placeholder,
+.app-page .app-card .appointment-form .form-group textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.85;
+}
+
+.app-page .app-card .cabinet-form .form-group input:disabled,
+.app-page .app-card .appointment-form .form-group input:disabled {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--muted);
+    opacity: 0.9;
+}
+
+.app-page .app-card .cabinet-form button[type="submit"],
+.app-page .app-card .appointment-form button[type="submit"] {
+    width: auto;
+    min-width: 160px;
+    margin-top: 0.75rem;
+    padding: 12px 20px;
+    background: #733fcc;
+    color: #120d07;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 6px 20px rgba(90, 16, 117, 0.35);
+}
+
+.app-page .app-card .cabinet-form button[type="submit"]:hover,
+.app-page .app-card .appointment-form button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(139, 125, 255, 0.28);
+    background: #8350d4;
+    color: #120d07;
+}
+
+.cabinet-muted {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.app-msg {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.app-msg.ok {
+    background: rgba(76, 175, 80, 0.12);
+    color: #c8e6c9;
+    border: 1px solid rgba(129, 199, 132, 0.35);
+}
+
+.app-msg.err {
+    background: rgba(239, 83, 80, 0.12);
+    color: #ffcdd2;
+    border: 1px solid rgba(229, 115, 115, 0.4);
+}
+
+.nav-account {
+    list-style: none;
+}
+
+.nav-account-label {
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
