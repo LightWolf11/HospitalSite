@@ -11,6 +11,7 @@ $extraCss = ['hero.css', 'services.css', 'doctors.css', 'appointment.css', 'stat
 require __DIR__ . '/includes/partials/public_head.php';
 require __DIR__ . '/includes/partials/public_nav.php';
 ?>
+
     <section class="hero" id="home">
         <div class="hero-content">
             <h1 class="hero-title">Ваше здоровье - наш приоритет</h1>
