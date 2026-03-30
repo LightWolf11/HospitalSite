@@ -772,6 +772,42 @@
     color: var(--text);
 }
 
+.admin-panel .admin-detail input,
+.admin-panel .admin-detail select {
+    width: 100%;
+    max-width: 480px;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    box-shadow: none;
+}
+
+.admin-panel .admin-detail input::placeholder,
+.admin-panel .admin-detail select::placeholder {
+    color: var(--muted);
+    opacity: 0.85;
+}
+
+.admin-panel .admin-detail input:focus,
+.admin-panel .admin-detail select:focus {
+    outline: none;
+    border-color: rgba(139, 125, 255, 0.65);
+    box-shadow: 0 0 0 3px rgba(139, 125, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.admin-panel .admin-detail input[type="checkbox"] {
+    width: auto;
+    max-width: none;
+    padding: 0;
+    margin: 0 0.55rem 0 0;
+    transform: translateY(1px);
+    accent-color: var(--primary-color);
+}
+
 .admin-panel tr.row-unread {
     font-weight: 600;
     background: rgba(255, 193, 7, 0.08);
@@ -819,7 +855,7 @@
 
 .navbar .logo .logo-sub {
     font-family: Inter, system-ui, sans-serif !important;
-    font-size: 9px !important;
+    font-size: 12px !important;
     font-weight: 600 !important;
     letter-spacing: 0.02em !important;
     line-height: 1.15 !important;
