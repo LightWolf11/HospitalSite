@@ -7,10 +7,10 @@ if (!isset($NAV_BASE)) {
     $NAV_BASE = '';
 }
 $home = public_href('index.php', $NAV_BASE);
-$services = public_href('pages/services.html', $NAV_BASE);
-$license = public_href('pages/license.html', $NAV_BASE);
-$privacy = public_href('pages/privacy.html', $NAV_BASE);
-$terms = public_href('pages/terms.html', $NAV_BASE);
+$services = public_href('pages/services.php', $NAV_BASE);
+$license = public_href('pages/license.php', $NAV_BASE);
+$privacy = public_href('pages/privacy.php', $NAV_BASE);
+$terms = public_href('pages/terms.php', $NAV_BASE);
 $faq = public_href('pages/faq.php', $NAV_BASE);
 ?>
     <footer class="footer">
