@@ -63,10 +63,10 @@ function email_reply_template(string $recipientName, string $appealText, string 
     $inner = <<<HTML
 <p style="margin:0 0 10px;font-size:16px;">Здравствуйте, {$name}!</p>
 <p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#333;">Администратор ответил на ваше обращение &laquo;{$appeal}&raquo;.</p>
-<p style="margin:0 0 14px;font-size:15px;line-height:1.6;color:#333;">Спасибо за ваше обращение.</p>
 <div style="font-size:15px;line-height:1.65;color:#333;border-left:4px solid #8812be;padding-left:16px;margin:16px 0;">
   {$body}
 </div>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.6;color:#333;">Спасибо за ваше обращение.</p>
 <p style="margin:24px 0 0;font-size:13px;color:#5c4d6e;">С уважением,<br>команда {$site}</p>
 HTML;
 
