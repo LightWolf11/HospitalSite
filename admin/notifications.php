@@ -25,7 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 throw new RuntimeException('Не найдено');
             }
             $pdo->prepare('UPDATE feedback_messages SET admin_reply = ?, replied_at = NOW(), is_read = 1 WHERE id = ?')->execute([$reply, $id]);
-            $html = email_reply_template($row['name'], $reply, $config);
+            $msg = trim((string) $row['message']);
+            $appeal = function_exists('mb_substr') ? mb_substr($msg, 0, 120) : substr($msg, 0, 120);
+            $more = function_exists('mb_strlen') ? (mb_strlen($msg) > 120) : (strlen($msg) > 120);
+            if ($more) $appeal .= '…';
+            $html = email_reply_template((string) $row['name'], $appeal, $reply, $config);
             send_html_mail($config, $row['email'], 'Ответ на ваше обращение — ' . ($config['mail']['from_name'] ?? 'Клиника'), $html);
             $message = 'Ответ отправлен на ' . $row['email'];
         } elseif ($action === 'reply_team') {
@@ -34,14 +38,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($id < 1 || strlen($reply) < 3) {
                 throw new RuntimeException('Введите ответ');
             }
-            $st = $pdo->prepare('SELECT full_name, email FROM team_applications WHERE id = ?');
+            $st = $pdo->prepare('SELECT full_name, email, position, message FROM team_applications WHERE id = ?');
             $st->execute([$id]);
             $row = $st->fetch();
             if (!$row) {
                 throw new RuntimeException('Не найдено');
             }
             $pdo->prepare('UPDATE team_applications SET admin_reply = ?, replied_at = NOW(), is_read = 1, status = ? WHERE id = ?')->execute([$reply, 'answered', $id]);
-            $html = email_reply_template($row['full_name'], $reply, $config);
+            $pos = trim((string) ($row['position'] ?? ''));
+            $msg = trim((string) ($row['message'] ?? ''));
+            $base = $pos !== '' ? ('Анкета в команду: ' . $pos) : 'Анкета в команду';
+            if ($msg !== '') {
+                $cut = function_exists('mb_substr') ? mb_substr($msg, 0, 120) : substr($msg, 0, 120);
+                $more = function_exists('mb_strlen') ? (mb_strlen($msg) > 120) : (strlen($msg) > 120);
+                if ($more) $cut .= '…';
+                $base .= ' — ' . $cut;
+            }
+            $html = email_reply_template((string) $row['full_name'], $base, $reply, $config);
             send_html_mail($config, $row['email'], 'Ответ по анкете в команду — ' . ($config['mail']['from_name'] ?? 'Клиника'), $html);
             $message = 'Ответ отправлен';
         } elseif ($action === 'mark_read_fb' && ($id = (int) ($_POST['id'] ?? 0)) > 0) {

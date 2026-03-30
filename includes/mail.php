@@ -54,13 +54,16 @@ function email_site_layout(string $innerHtml, array $config, string $headerSubti
 HTML;
 }
 
-function email_reply_template(string $recipientName, string $adminReply, array $config): string
+function email_reply_template(string $recipientName, string $appealText, string $adminReply, array $config): string
 {
     $site = h($config['mail']['from_name'] ?? 'Клиника');
     $body = nl2br(h($adminReply));
     $name = h($recipientName);
+    $appeal = h($appealText);
     $inner = <<<HTML
-<p style="margin:0 0 16px;font-size:16px;">Здравствуйте, {$name}!</p>
+<p style="margin:0 0 10px;font-size:16px;">Здравствуйте, {$name}!</p>
+<p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#333;">Администратор ответил на ваше обращение &laquo;{$appeal}&raquo;.</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.6;color:#333;">Спасибо за ваше обращение.</p>
 <div style="font-size:15px;line-height:1.65;color:#333;border-left:4px solid #8812be;padding-left:16px;margin:16px 0;">
   {$body}
 </div>
