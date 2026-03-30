@@ -74,6 +74,23 @@ p { color: var(--muted); }
   letter-spacing: 0.04em;
 }
 
+.navbar .logo .logo-title {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+.navbar .logo .logo-sub {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
 .nav-menu {
   color: var(--text);
   gap: 26px;
