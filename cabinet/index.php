@@ -146,6 +146,7 @@ require dirname(__DIR__) . '/includes/partials/public_nav.php';
                                     <th>Врач</th>
                                     <th>Статус</th>
                                     <th>Комментарий врача</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -155,6 +156,16 @@ require dirname(__DIR__) . '/includes/partials/public_nav.php';
                                     <td><?= h($a['doctor_name']) ?><br><small><?= h($a['specialty']) ?></small></td>
                                     <td><?= h($a['status']) ?><?= $a['patient_arrived'] ? ', пришёл' : '' ?></td>
                                     <td><?= $a['doctor_comment'] !== null && $a['doctor_comment'] !== '' ? h($a['doctor_comment']) : '—' ?></td>
+                                    <td>
+                                        <?php
+                                        $canCancel = in_array((string) $a['status'], ['pending','confirmed'], true);
+                                        ?>
+                                        <?php if ($canCancel): ?>
+                                            <button type="button" class="btn btn-secondary btn-sm js-cancel-appt" data-id="<?= (int) $a['id'] ?>">Отменить</button>
+                                        <?php else: ?>
+                                            —
+                                        <?php endif; ?>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
@@ -168,6 +179,39 @@ require dirname(__DIR__) . '/includes/partials/public_nav.php';
 require dirname(__DIR__) . '/includes/partials/public_footer.php';
 ?>
     <script src="../assets/js/main.js"></script>
+    <script>
+    (function () {
+        var btns = document.querySelectorAll('.js-cancel-appt');
+        if (!btns.length) return;
+        btns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var id = btn.getAttribute('data-id');
+                if (!id) return;
+                if (!confirm('Отменить запись?')) return;
+                btn.disabled = true;
+                fetch('../api/index.php?action=appointment_cancel', {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: id })
+                })
+                    .then(function (r) { return r.json().then(function (b) { return { status: r.status, body: b }; }); })
+                    .then(function (res) {
+                        if (res.body && res.body.ok) {
+                            location.reload();
+                        } else {
+                            alert((res.body && res.body.error) ? res.body.error : 'Ошибка');
+                            btn.disabled = false;
+                        }
+                    })
+                    .catch(function () {
+                        alert('Ошибка сети');
+                        btn.disabled = false;
+                    });
+            });
+        });
+    })();
+    </script>
     <script>
     (function () {
         var form = document.getElementById('cabinet-password-form');

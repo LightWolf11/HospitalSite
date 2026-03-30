@@ -1,31 +1,12 @@
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const section = document.querySelector('section');
-    if (section && window.parent !== window) {
-        const resizeObserver = new ResizeObserver(() => {
-            const height = document.body.scrollHeight || section.scrollHeight;
-            window.parent.postMessage({
-                type: 'resize',
-                section: 'appointment',
-                height: height
-            }, '*');
-        });
-        resizeObserver.observe(section);
-        const height = document.body.scrollHeight || section.scrollHeight;
-        window.parent.postMessage({
-            type: 'resize',
-            section: 'appointment',
-            height: height
-        }, '*');
-    }
-});
-
 const API = 'api/index.php';
 
 document.addEventListener('DOMContentLoaded', function() {
     const appointmentForm = document.getElementById('appointmentForm');
     const doctorSelect = document.getElementById('doctor_profile_id');
+    const timeSelect = document.getElementById('time');
+    const dateInput = document.getElementById('date');
     const guestHint = document.getElementById('appointmentGuestHint');
 
     if (doctorSelect) {
@@ -61,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(function () {});
 
     if (appointmentForm) {
-        const dateInput = document.getElementById('date');
         if (dateInput) {
             const today = new Date();
             const dd = String(today.getDate()).padStart(2, '0');
@@ -78,6 +58,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
             dateInput.max = yyyy_max + '-' + mm_max + '-' + dd_max;
         }
+
+        function setTimeOptionsBusy(busyTimes) {
+            if (!timeSelect) return;
+            const busySet = new Set((busyTimes || []).map(String));
+            Array.from(timeSelect.options).forEach(opt => {
+                const v = (opt.value || '').trim();
+                if (!v) return;
+                const baseText = opt.getAttribute('data-base-text') || opt.textContent || v;
+                if (!opt.getAttribute('data-base-text')) opt.setAttribute('data-base-text', baseText);
+                const isBusy = busySet.has(v);
+                opt.disabled = isBusy;
+                opt.textContent = isBusy ? (baseText + ' — занято') : baseText;
+                if (opt.disabled && timeSelect.value === v) {
+                    timeSelect.value = '';
+                }
+            });
+        }
+
+        function refreshBusyTimes() {
+            if (!doctorSelect || !dateInput || !timeSelect) return;
+            const doctorId = (doctorSelect.value || '').trim();
+            const date = (dateInput.value || '').trim();
+            if (!doctorId || !date) {
+                setTimeOptionsBusy([]);
+                return;
+            }
+            fetch(API + '?action=doctor_busy_times&doctor_profile_id=' + encodeURIComponent(doctorId) + '&date=' + encodeURIComponent(date), {
+                credentials: 'same-origin'
+            })
+                .then(r => r.json())
+                .then(data => {
+                    if (!data || !data.ok) return;
+                    setTimeOptionsBusy(data.busy_times || []);
+                })
+                .catch(() => {});
+        }
+
+        if (doctorSelect) doctorSelect.addEventListener('change', refreshBusyTimes);
+        if (dateInput) dateInput.addEventListener('change', refreshBusyTimes);
 
         const phoneInput = document.getElementById('phone');
         if (phoneInput) {
@@ -135,6 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (res.body.ok) {
                         showMessage('✓ Запись создана. Проверьте уведомления в личном кабинете.', 'success');
                         appointmentForm.reset();
+                        refreshBusyTimes();
                     } else if (res.status === 401) {
                         showMessage('Войдите в личный кабинет пациента, чтобы записаться.', 'error');
                     } else {

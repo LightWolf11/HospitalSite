@@ -89,3 +89,24 @@ function email_appointment_reminder(string $toName, string $whenHuman, string $s
 
     return email_site_layout($inner, $config, $title);
 }
+
+function email_new_appointment_doctor(string $doctorName, string $patientName, string $whenHuman, string $patientNote, array $config): string
+{
+    $site = h($config['mail']['from_name'] ?? 'Клиника');
+    $doc = h($doctorName);
+    $pat = h($patientName);
+    $when = h($whenHuman);
+    $note = trim($patientNote);
+    $noteHtml = $note !== '' ? ('<p style="margin:12px 0 0;font-size:14px;color:#333;"><strong>Комментарий пациента:</strong><br>' . nl2br(h($note)) . '</p>') : '';
+    $inner = <<<HTML
+<p style="margin:0 0 10px;font-size:16px;">Здравствуйте, {$doc}!</p>
+<p style="margin:0 0 14px;font-size:15px;line-height:1.6;color:#333;">У вас новая запись на приём.</p>
+<div style="font-size:15px;line-height:1.65;color:#333;border-left:4px solid #8812be;padding-left:16px;margin:16px 0;">
+  <p style="margin:0;"><strong>Пациент:</strong> {$pat}</p>
+  <p style="margin:6px 0 0;"><strong>Время:</strong> {$when}</p>
+  {$noteHtml}
+</div>
+<p style="margin:20px 0 0;font-size:13px;color:#5c4d6e;">{$site}</p>
+HTML;
+    return email_site_layout($inner, $config, 'Новая запись на приём');
+}

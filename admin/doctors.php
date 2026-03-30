@@ -42,18 +42,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 );
                 $st->execute([$fullName, $specialty, $bio, $photoPath, $contactEmail, $contactPhone, $sortOrder, $isActive]);
                 $newId = (int) $pdo->lastInsertId();
-                if ($loginEmail !== '' && strlen($loginPass) >= 6) {
-                    $st = $pdo->prepare('SELECT id FROM users WHERE email = ?');
-                    $st->execute([$loginEmail]);
-                    if ($st->fetch()) {
-                        throw new RuntimeException('Email для входа уже занят');
+                $bindEmail = $contactEmail !== '' ? $contactEmail : $loginEmail;
+                $bindEmail = strtolower(trim($bindEmail));
+                if ($bindEmail !== '' && filter_var($bindEmail, FILTER_VALIDATE_EMAIL)) {
+                    $st = $pdo->prepare('SELECT id, doctor_profile_id FROM users WHERE email = ?');
+                    $st->execute([$bindEmail]);
+                    $urow = $st->fetch();
+                    if ($urow) {
+                        if (!empty($urow['doctor_profile_id']) && (int) $urow['doctor_profile_id'] !== $newId) {
+                            throw new RuntimeException('Этот email уже привязан к другому врачу');
+                        }
+                        $uid = (int) $urow['id'];
+                    } else {
+                        if (strlen($loginPass) < 6) {
+                            $pdo->commit();
+                            $_SESSION['flash_admin_doctors_ok'] = 'Врач добавлен (привязка к email не выполнена: нет пароля для создания учётной записи)';
+                            header('Location: doctors.php?edit=' . $newId);
+                            exit;
+                        }
+                        $hash = password_hash($loginPass, PASSWORD_DEFAULT);
+                        $st = $pdo->prepare('INSERT INTO users (email, password_hash, full_name, phone, role, doctor_profile_id) VALUES (?,?,?,?,?,?)');
+                        $st->execute([$bindEmail, $hash, $fullName, $contactPhone, 'doctor', $newId]);
+                        $uid = (int) $pdo->lastInsertId();
                     }
-                    $hash = password_hash($loginPass, PASSWORD_DEFAULT);
-                    $st = $pdo->prepare(
-                        'INSERT INTO users (email, password_hash, full_name, phone, role, doctor_profile_id) VALUES (?,?,?,?,?,?)'
-                    );
-                    $st->execute([$loginEmail, $hash, $fullName, $contactPhone, 'doctor', $newId]);
-                    $uid = (int) $pdo->lastInsertId();
+                    $pdo->prepare("UPDATE users SET role = 'doctor', doctor_profile_id = ? WHERE id = ?")->execute([$newId, $uid]);
                     $pdo->prepare('UPDATE doctor_profiles SET user_id = ? WHERE id = ?')->execute([$uid, $newId]);
                 }
                 $pdo->commit();
@@ -71,6 +83,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pdo->prepare(
                 'UPDATE doctor_profiles SET full_name=?, specialty=?, bio=?, photo_path=?, contact_email=?, contact_phone=?, sort_order=?, is_active=? WHERE id=?'
             )->execute([$fullName, $specialty, $bio, $finalPhoto, $contactEmail, $contactPhone, $sortOrder, $isActive, $id]);
+
+            $bindEmail = strtolower(trim($contactEmail));
+            if ($bindEmail !== '' && filter_var($bindEmail, FILTER_VALIDATE_EMAIL)) {
+                $pdo->beginTransaction();
+                $st = $pdo->prepare('SELECT id, doctor_profile_id FROM users WHERE email = ?');
+                $st->execute([$bindEmail]);
+                $urow = $st->fetch();
+                if ($urow) {
+                    if (!empty($urow['doctor_profile_id']) && (int) $urow['doctor_profile_id'] !== $id) {
+                        throw new RuntimeException('Этот email уже привязан к другому врачу');
+                    }
+                    $uid = (int) $urow['id'];
+                    $pdo->prepare("UPDATE users SET role = 'doctor', doctor_profile_id = ? WHERE id = ?")->execute([$id, $uid]);
+                    $pdo->prepare('UPDATE doctor_profiles SET user_id = ? WHERE id = ?')->execute([$uid, $id]);
+                }
+                $pdo->commit();
+            }
             $_SESSION['flash_admin_doctors_ok'] = 'Сохранено';
             header('Location: doctors.php?edit=' . $id);
             exit;

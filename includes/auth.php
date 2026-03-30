@@ -25,6 +25,12 @@ function user_can_access_admin(?array $u): bool
     return !empty($u['is_admin']);
 }
 
+function is_superadmin(?array $u): bool
+{
+    if (!$u) return false;
+    return strtolower(trim((string) ($u['email'] ?? ''))) === 'admin@hospital.local';
+}
+
 
 function user_can_access_patient_area(?array $u): bool
 {

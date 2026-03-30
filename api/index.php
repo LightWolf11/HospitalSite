@@ -54,6 +54,12 @@ switch ($action) {
     case 'appointment_create':
         handle_appointment_create($pdo, $input, $config);
         break;
+    case 'doctor_busy_times':
+        handle_doctor_busy_times($pdo);
+        break;
+    case 'appointment_cancel':
+        handle_appointment_cancel($pdo, $input);
+        break;
     case 'my_appointments':
         handle_my_appointments($pdo);
         break;
@@ -260,6 +266,15 @@ function handle_appointment_create(PDO $pdo, array $in, array $config): void
     if (!$doc) {
         json_out(['ok' => false, 'error' => 'Врач не найден'], 404);
     }
+
+    $chk = $pdo->prepare(
+        "SELECT id FROM appointments WHERE doctor_profile_id = ? AND scheduled_at = ? AND status IN ('pending','confirmed') LIMIT 1"
+    );
+    $chk->execute([$doctorId, $scheduled]);
+    if ($chk->fetch()) {
+        json_out(['ok' => false, 'error' => 'Это время уже занято. Выберите другое.' ], 409);
+    }
+
     $st = $pdo->prepare(
         'INSERT INTO appointments (patient_user_id, doctor_profile_id, scheduled_at, status, patient_note)
          VALUES (?,?,?,?,?)'
@@ -292,7 +307,79 @@ function handle_appointment_create(PDO $pdo, array $in, array $config): void
         );
     }
 
+    $doctorEmail = '';
+    if (!empty($doc['user_id'])) {
+        $st = $pdo->prepare('SELECT email FROM users WHERE id = ?');
+        $st->execute([(int) $doc['user_id']]);
+        $row = $st->fetch();
+        if ($row && !empty($row['email'])) {
+            $doctorEmail = (string) $row['email'];
+        }
+    }
+    if ($doctorEmail === '' && !empty($doc['contact_email'])) {
+        $doctorEmail = (string) $doc['contact_email'];
+    }
+    if ($doctorEmail !== '' && filter_var($doctorEmail, FILTER_VALIDATE_EMAIL)) {
+        $patName = '';
+        $st = $pdo->prepare('SELECT full_name FROM users WHERE id = ?');
+        $st->execute([(int) $u['id']]);
+        $row = $st->fetch();
+        $patName = (string) ($row['full_name'] ?? 'Пациент');
+        $html = email_new_appointment_doctor((string) $doc['full_name'], $patName, $human, $note, $config);
+        send_html_mail($config, $doctorEmail, 'Новая запись на приём — ' . ($config['mail']['from_name'] ?? 'Клиника'), $html);
+    }
+
     json_out(['ok' => true, 'appointment_id' => $apptId]);
+}
+
+function handle_doctor_busy_times(PDO $pdo): void
+{
+    $doctorId = (int) ($_GET['doctor_profile_id'] ?? 0);
+    $date = trim((string) ($_GET['date'] ?? ''));
+    if ($doctorId < 1 || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
+        json_out(['ok' => false, 'error' => 'Некорректные параметры'], 400);
+    }
+    $st = $pdo->prepare(
+        "SELECT DATE_FORMAT(scheduled_at, '%H:%i') AS t
+         FROM appointments
+         WHERE doctor_profile_id = ?
+           AND DATE(scheduled_at) = ?
+           AND status IN ('pending','confirmed')"
+    );
+    $st->execute([$doctorId, $date]);
+    $times = [];
+    foreach ($st->fetchAll(PDO::FETCH_ASSOC) as $r) {
+        if (!empty($r['t'])) $times[] = (string) $r['t'];
+    }
+    $times = array_values(array_unique($times));
+    sort($times);
+    json_out(['ok' => true, 'busy_times' => $times]);
+}
+
+function handle_appointment_cancel(PDO $pdo, array $in): void
+{
+    $u = require_login($pdo);
+    $id = (int) ($in['id'] ?? 0);
+    if ($id < 1) {
+        json_out(['ok' => false, 'error' => 'Нет id записи'], 400);
+    }
+    $st = $pdo->prepare('SELECT id, patient_user_id, status FROM appointments WHERE id = ?');
+    $st->execute([$id]);
+    $row = $st->fetch();
+    if (!$row) {
+        json_out(['ok' => false, 'error' => 'Запись не найдена'], 404);
+    }
+    $status = (string) ($row['status'] ?? '');
+    if ($status === 'cancelled' || $status === 'completed') {
+        json_out(['ok' => false, 'error' => 'Нельзя отменить эту запись'], 409);
+    }
+    $ownerId = (int) ($row['patient_user_id'] ?? 0);
+    $isAdmin = (($u['role'] ?? '') === 'admin') || !empty($u['is_admin']);
+    if (!$isAdmin && (int) $u['id'] !== $ownerId) {
+        json_out(['ok' => false, 'error' => 'Недостаточно прав'], 403);
+    }
+    $pdo->prepare("UPDATE appointments SET status = 'cancelled' WHERE id = ?")->execute([$id]);
+    json_out(['ok' => true]);
 }
 
 function handle_my_appointments(PDO $pdo): void

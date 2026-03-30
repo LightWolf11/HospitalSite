@@ -14,7 +14,7 @@
             .then(function (r) { return r.json(); })
             .then(function (data) {
                 if (!data.ok || !data.services || !data.services.length) {
-                    root.innerHTML = '<p class="section-subtitle">Услуги скоро появятся в админ-панели.</p>';
+                    root.innerHTML = '<p class="section-subtitle">На данный момент услуги отсутствуют.</p>';
                     return;
                 }
                 root.innerHTML = data.services.map(function (s) {
