@@ -533,7 +533,7 @@
 }
 
 .admin-subnav {
-    background: rgba(26, 46, 75, 0.95);
+    background: #591d68bf;
     box-shadow: var(--shadow);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -563,7 +563,7 @@
 }
 
 .admin-subnav-link.is-active {
-    background: rgba(76, 175, 80, 0.35);
+    background: rgba(121, 6, 150, 0.901);
     color: #fff;
 }
 
