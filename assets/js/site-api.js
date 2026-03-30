@@ -1,5 +1,6 @@
 (function () {
-    const API = 'api/index.php';
+    const path = (window.location && window.location.pathname) ? window.location.pathname : '';
+    const API = (/\/(pages|cabinet|doctor|admin)\//.test(path) ? '../api/index.php' : 'api/index.php');
 
     function esc(s) {
         const d = document.createElement('div');
