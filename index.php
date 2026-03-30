@@ -17,9 +17,8 @@ require __DIR__ . '/includes/partials/public_nav.php';
             <h1 class="hero-title">Ваше здоровье - наш приоритет</h1>
             <p class="hero-subtitle"><br>Современное медицинское обслуживание высочайшего качества</p>
             <div class="hero-buttons">
-                
                 <a href="#appointment" class="btn btn-primary">Записаться на приём</a>
-                <a href="pages/services.html" class="btn btn-secondary">Узнать о услугах</a>
+                <a href="pages/services.php" class="btn btn-secondary">Узнать о услугах</a>
             </div>
         </div>
         <div class="hero-image">
@@ -41,43 +40,8 @@ require __DIR__ . '/includes/partials/public_nav.php';
         <div class="container">
             <h2 class="section-title">Наши Услуги</h2>
             <p class="section-subtitle">Полный спектр медицинских услуг для вашего здоровья</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/images/services/Kardio.jpg" alt="Кардиология" class="doctor-photo">
-                    </div>
-                    <h3>Кардиология</h3>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/images/services/Pyls.jpg" alt="Пульмонология" class="doctor-photo">
-                    </div>
-                    <h3>Пульмонология</h3>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/images/services/Stomat.jpg" alt="Стоматология" class="doctor-photo">
-                    </div>
-                    <h3>Стоматология</h3>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/images/services/Oftalm.jpg" alt="Офтальмология" class="doctor-photo">
-                    </div>
-                    <h3>Офтальмология</h3>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/images/services/Nevro.jpg" alt="Неврология" class="doctor-photo">
-                    </div>
-                    <h3>Неврология</h3>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/images/services/Orto.jpg" alt="Ортопедия" class="doctor-photo">
-                    </div>
-                    <h3>Ортопедия</h3>
-                </div>
+            <div class="services-grid" id="servicesGrid">
+                <p class="section-subtitle" style="grid-column:1/-1;">Загрузка услуг…</p>
             </div>
         </div>
     </section>
@@ -86,55 +50,8 @@ require __DIR__ . '/includes/partials/public_nav.php';
         <div class="container">
             <h2 class="section-title">Наши Врачи</h2>
             <p class="section-subtitle">Опытные специалисты с высокой квалификацией</p>
-            <div class="doctors-grid">
-                <div class="doctor-card">
-                    <div class="doctor-image">
-                        <img src="assets/images/doctors/Gorov.jpg" alt="Горов Дмитрий" class="doctor-photo">
-                    </div>
-                    <h3>Горов Дмитрий</h3>
-                    <p class="specialty">Кардиолог</p>
-                    <p class="bio">Стаж работы: 5 лет, высшая квалификаия</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="social-icon" title="Phone"><i class="fas fa-phone"></i></a>
-                    </div>
-                </div>
-                <div class="doctor-card">
-                    <div class="doctor-image">
-                        <img src="assets/images/doctors/Kasperovich.jpg" alt="Касперович Артем" class="doctor-photo">
-                    </div>
-                    <h3>Касперович Артем</h3>
-                    <p class="specialty">Стоматолог</p>
-                    <p class="bio">Стаж работы: 12 лет, специалист по протезированию</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="social-icon" title="Phone"><i class="fas fa-phone"></i></a>
-                    </div>
-                </div>
-                <div class="doctor-card">
-                    <div class="doctor-image">
-                        <img src="assets/images/doctors/Prokydin.jpg" alt="Прокудин Арсений" class="doctor-photo">
-                    </div>
-                    <h3>Прокудин Арсений</h3>
-                    <p class="specialty">Невролог</p>
-                    <p class="bio">Стаж работы: 7 лет, кандидат медицинских наук</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="social-icon" title="Phone"><i class="fas fa-phone"></i></a>
-                    </div>
-                </div>
-                <div class="doctor-card">
-                    <div class="doctor-image">
-                        <img src="assets/images/doctors/Greben.jpg" alt="Гребень Егор" class="doctor-photo">
-                    </div>
-                    <h3>Гребень Егор</h3>
-                    <p class="specialty">Окулист</p>
-                    <p class="bio">Стаж работы: 20 лет, специалист по лазерной коррекции</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="social-icon" title="Phone"><i class="fas fa-phone"></i></a>
-                    </div>
-                </div>
+            <div class="doctors-grid" id="doctorsGrid">
+                <p class="section-subtitle" style="grid-column:1/-1;">Загрузка врачей…</p>
             </div>
         </div>
     </section>
@@ -142,39 +59,24 @@ require __DIR__ . '/includes/partials/public_nav.php';
     <section class="appointment" id="appointment">
         <div class="container">
             <h2 class="section-title">Записаться на приём</h2>
-            <p class="section-subtitle">Онлайн бронирование</p>
-            <form class="appointment-form" id="appointmentForm">
+            <p class="section-subtitle">Онлайн бронирование (нужна регистрация пациента)</p>
+            <p id="appointmentGuestHint" class="section-subtitle" style="display:none;">
+                <a href="cabinet/register.php">Зарегистрируйтесь</a> или
+                <a href="cabinet/login.php">войдите</a>, чтобы выбрать врача и время.
+            </p>
+            <form class="appointment-form" id="appointmentForm" style="display:none;">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="name">Ваше имя</label>
-                        <input type="text" id="name" name="name" placeholder="Дарья Новик" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="example@mail.com" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="phone">Телефон</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+375 33 000 00 00" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="specialty">Специальность врача</label>
-                        <select id="specialty" name="specialty" required>
-                            <option value="">Выберите специальность</option>
-                            <option value="cardio">Кардиология</option>
-                            <option value="dent">Стоматология</option>
-                            <option value="neuro">Неврология</option>
-                            <option value="eye">Офтальмология</option>
-                            <option value="ortho">Ортопедия</option>
+                        <label for="doctor_profile_id">Врач</label>
+                        <select id="doctor_profile_id" name="doctor_profile_id" required>
+                            <option value="">Загрузка списка…</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="date">Желаемая дата</label>
-                        <input type="date" id="date" name="date" placeholder="дд.мм.гггг" required>
+                        <input type="date" id="date" name="date" required>
                     </div>
                     <div class="form-group">
                         <label for="time">Время приёма</label>
@@ -183,17 +85,20 @@ require __DIR__ . '/includes/partials/public_nav.php';
                             <option value="09:00">09:00</option>
                             <option value="10:00">10:00</option>
                             <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
                             <option value="14:00">14:00</option>
                             <option value="15:00">15:00</option>
                             <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group full-width">
                     <label for="message">Дополнительная информация</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Опишите ваши симптомы или вопросы..."></textarea>
+                    <textarea id="message" name="message" rows="5" placeholder="Опишите симптомы или вопросы..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                <button type="submit" class="btn btn-primary">Записаться</button>
             </form>
             <div id="formMessage" class="form-message" style="display: none;"></div>
         </div>
@@ -247,32 +152,35 @@ require __DIR__ . '/includes/partials/public_nav.php';
                 </div>
             </div>
             <br>
+            </section>
+    <section class="contact" id="contact-feedback">  
             <h2 class="section-title">Обратная связь</h2>
             <br>
-            <form class="appointment-form" id="appointmentForm">
+            <form class="appointment-form" id="contactFeedbackForm">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="name">Ваше имя</label>
-                        <input type="text" id="name" name="name" placeholder="Дарья Новик" required>
+                        <label for="contactName">Ваше имя</label>
+                        <input type="text" id="contactName" name="name" placeholder="Дарья Новик" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                        <label for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="example@mail.com" required>
                     </div>
                 </div>
                 <div class="form-group full-width">
-                    <label for="message">Описание</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Опишите максимально подробно ваш вопрос..."></textarea>
+                    <label for="contactMessage">Описание</label>
+                    <textarea id="contactMessage" name="message" rows="5" placeholder="Опишите максимально подробно ваш вопрос..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                <button type="submit" class="btn btn-primary">Отправить</button>
             </form>
         </div>
     </section>
+
 <?php
 require __DIR__ . '/includes/partials/public_footer.php';
 ?>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/site-api.js"></script>
-    <script src="asssets/js/appointment.js"></script>
+    <script src="assets/js/appointment.js"></script>
 </body>
 </html>
