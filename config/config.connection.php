@@ -13,7 +13,7 @@ return [
         'session_name' => 'HOSPITAL_SESSID',
     ],
     'upload' => [
-        'max_bytes' => 5 * 1024 * 1024,
+        'max_bytes' => 10 * 1024 * 1024,
         'allowed_mime' => ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'application/pdf'],
     ],
 ];
