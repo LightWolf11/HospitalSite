@@ -4,7 +4,7 @@ declare(strict_types=1);
 $configPath = dirname(__DIR__) . '/config/config.php';
 if (!is_readable($configPath)) {
     http_response_code(500);
-    exit('Создайте config/config.php на основе config/config.sample.php');
+    exit('Создайте config/config.php на основе config/config.connection.php');
 }
 
 $config = require $configPath;
