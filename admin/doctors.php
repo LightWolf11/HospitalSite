@@ -45,10 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $bindEmail = $contactEmail !== '' ? $contactEmail : $loginEmail;
                 $bindEmail = strtolower(trim($bindEmail));
                 if ($bindEmail !== '' && filter_var($bindEmail, FILTER_VALIDATE_EMAIL)) {
-                    $st = $pdo->prepare('SELECT id, doctor_profile_id FROM users WHERE email = ?');
+                    $st = $pdo->prepare('SELECT id, doctor_profile_id, role FROM users WHERE email = ?');
                     $st->execute([$bindEmail]);
                     $urow = $st->fetch();
                     if ($urow) {
+                        $role = (string) ($urow['role'] ?? '');
+                        if ($role !== '' && $role !== 'doctor') {
+                            throw new RuntimeException('Этот email уже используется обычным аккаунтом. Для врача укажите отдельный email (или привяжите email уже существующего врача).');
+                        }
                         if (!empty($urow['doctor_profile_id']) && (int) $urow['doctor_profile_id'] !== $newId) {
                             throw new RuntimeException('Этот email уже привязан к другому врачу');
                         }
@@ -87,10 +91,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bindEmail = strtolower(trim($contactEmail));
             if ($bindEmail !== '' && filter_var($bindEmail, FILTER_VALIDATE_EMAIL)) {
                 $pdo->beginTransaction();
-                $st = $pdo->prepare('SELECT id, doctor_profile_id FROM users WHERE email = ?');
+                $st = $pdo->prepare('SELECT id, doctor_profile_id, role FROM users WHERE email = ?');
                 $st->execute([$bindEmail]);
                 $urow = $st->fetch();
                 if ($urow) {
+                    $role = (string) ($urow['role'] ?? '');
+                    if ($role !== '' && $role !== 'doctor') {
+                        throw new RuntimeException('Этот email уже используется обычным аккаунтом. Для врача укажите отдельный email (или привяжите email уже существующего врача).');
+                    }
                     if (!empty($urow['doctor_profile_id']) && (int) $urow['doctor_profile_id'] !== $id) {
                         throw new RuntimeException('Этот email уже привязан к другому врачу');
                     }
