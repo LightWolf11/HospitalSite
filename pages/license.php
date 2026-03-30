@@ -1,51 +1,19 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Лицензия медицинской деятельности клиники">
-    <title>Лицензия - Больница "В последний путь"</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/variables.css">
-    <link rel="stylesheet" href="../assets/css/animations.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/responsive.css">
-    <link rel="stylesheet" href="../assets/css/hero.css">
-    <link rel="stylesheet" href="../assets/css/services.css">
-    <link rel="stylesheet" href="../assets/css/contact.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/buttons.css">
-    <link rel="stylesheet" href="../assets/css/footer.css">
-    <link rel="stylesheet" href="../assets/css/theme.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="../assets/images/logo.png" type="image/png">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand">
-                <a href="../index.html" class="logo">
-                    <img src="../assets/images/logo.png" width="50" height="50"> Больница "В последний путь"
-                </a>
-                <button class="hamburger" id="hamburgerBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="../index.html#home" class="nav-link">Главная</a></li>
-                <li><a href="services.html" class="nav-link">Услуги</a></li>
-                <li><a href="../index.html#doctors" class="nav-link">Врачи</a></li>
-                <li><a href="../index.html#contact" class="nav-link">Контакты</a></li>
-                <li><a href="faq.html" class="nav-link">FAQ</a></li>
-                <li><a href="about.html" class="nav-link">О нас</a></li>
-                <li><a href="../index.html#appointment" class="btn btn-primary">Записать приём</a></li>
-            </ul>
-        </div>
-    </nav>
+<?php
+declare(strict_types=1);
+
+require_once dirname(__DIR__) . '/includes/bootstrap.php';
+require_once dirname(__DIR__) . '/includes/paths.php';
+
+$pageTitle = 'О нас — Больница «В последний путь»';
+$NAV_BASE = '..';
+$ASSETS = '../assets/';
+$extraCss = ['hero.css', 'services.css', 'stats.css', 'contact.css'];
+$homeUrl = public_href('index.php', $NAV_BASE);
+$careersUrl = public_href('pages/careers.php', $NAV_BASE);
+
+require dirname(__DIR__) . '/includes/partials/public_head.php';
+require dirname(__DIR__) . '/includes/partials/public_nav.php';
+?>
 
     <section class="hero">
         <div class="hero-content">
@@ -164,53 +132,9 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Больница "В последний путь"</h3>
-                    <p>Ваше здоровье - наш приоритет</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Быстрые ссылки</h4>
-                    <ul>
-                        <li><a href="../index.html#home">Главная</a></li>
-                        <li><a href="services.html">Услуги</a></li>
-                        <li><a href="../index.html#doctors">Врачи</a></li>
-                        <li><a href="../index.html#contact">Контакты</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Услуги</h4>
-                    <ul>
-                        <li><a href="../index.html#services">Консультация</a></li>
-                        <li><a href="../index.html#services">Диагностика</a></li>
-                        <li><a href="../index.html#services">Лечение</a></li>
-                        <li><a href="../index.html#services">Профилактика</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Информация</h4>
-                    <ul>
-                        <li><a href="license.html">Лицензия</a></li>
-                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
-                        <li><a href="terms.html">Условия использования</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Больница "В последний путь". Разработана на конкурс ПрофМастерства.</p>
-            </div>
-        </div>
-    </footer>
-
+<?php
+require dirname(__DIR__) . '/includes/partials/public_footer.php';
+?>
     <script src="../assets/js/main.js"></script>
 </body>
 </html>

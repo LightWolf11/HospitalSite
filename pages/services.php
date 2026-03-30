@@ -1,53 +1,19 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Услуги - Больница "В последний путь"</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/variables.css">
-    <link rel="stylesheet" href="../assets/css/animations.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/buttons.css">
-    <link rel="stylesheet" href="../assets/css/hero.css">
-    <link rel="stylesheet" href="../assets/css/services.css">
-    <link rel="stylesheet" href="../assets/css/doctors.css">
-    <link rel="stylesheet" href="../assets/css/appointment.css">
-    <link rel="stylesheet" href="../assets/css/stats.css">
-    <link rel="stylesheet" href="../assets/css/contact.css">
-    <link rel="stylesheet" href="../assets/css/footer.css">
-    <link rel="stylesheet" href="../assets/css/responsive.css">
-    <link rel="stylesheet" href="../assets/css/theme.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="../assets/images/logo.png" type="image/png">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand">
-                <a href="../index.html" class="logo">
-                    <img src="../assets/images/logo.png" width="50" height="50"> Больница "В последний путь"
-                </a>
-                <button class="hamburger" id="hamburgerBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="../index.html#home" class="nav-link">Главная</a></li>
-                <li><a href="services.html" class="nav-link" style="color: var(--secondary-color);">Услуги</a></li>
-                <li><a href="../index.html#doctors" class="nav-link">Врачи</a></li>
-                <li><a href="../index.html#contact" class="nav-link">Контакты</a></li>
-                <li><a href="faq.html" class="nav-link">FAQ</a></li>
-                <li><a href="about.html" class="nav-link">О нас</a></li>
-                <li><a href="../index.html#appointment" class="btn btn-primary">Записать приём</a></li>
-            </ul>
-        </div>
-    </nav>
+<?php
+declare(strict_types=1);
 
+require_once dirname(__DIR__) . '/includes/bootstrap.php';
+require_once dirname(__DIR__) . '/includes/paths.php';
+
+$pageTitle = 'Наши Услуги — Больница «В последний путь»';
+$NAV_BASE = '..';
+$ASSETS = '../assets/';
+$extraCss = ['hero.css', 'services.css', 'stats.css', 'contact.css'];
+$homeUrl = public_href('index.php', $NAV_BASE);
+$careersUrl = public_href('pages/careers.php', $NAV_BASE);
+
+require dirname(__DIR__) . '/includes/partials/public_head.php';
+require dirname(__DIR__) . '/includes/partials/public_nav.php';
+?>
     <section class="hero" style="min-height: auto; padding: 58px 0; grid-template-columns: 1fr; justify-items: center;">
         <div class="hero-content" style="text-align: center; margin: 0 auto; max-width: 900px; width: 100%; padding: 0 16px;">
             <h1 class="hero-title">Наши Услуги</h1>
@@ -316,6 +282,10 @@
         </div>
     </footer>
 
+<?php
+require dirname(__DIR__) . '/includes/partials/public_footer.php';
+?>
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
+
