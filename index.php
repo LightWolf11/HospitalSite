@@ -1,53 +1,16 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Больница "В последний путь"</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/variables.css">
-    <link rel="stylesheet" href="./assets/css/animations.css">
-    <link rel="stylesheet" href="./assets/css/navbar.css">
-    <link rel="stylesheet" href="./assets/css/buttons.css">
-    <link rel="stylesheet" href="./assets/css/hero.css">
-    <link rel="stylesheet" href="./assets/css/services.css">
-    <link rel="stylesheet" href="./assets/css/doctors.css">
-    <link rel="stylesheet" href="./assets/css/appointment.css">
-    <link rel="stylesheet" href="./assets/css/stats.css">
-    <link rel="stylesheet" href="./assets/css/contact.css">
-    <link rel="stylesheet" href="./assets/css/footer.css">
-    <link rel="stylesheet" href="./assets/css/responsive.css">
-    <link rel="stylesheet" href="./assets/css/theme.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="assets/images/logo.png" type="image/png">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand">
-                <a href="index.html" class="logo">
-                    <img src="assets/images/logo.png" width="50" height="50"> Больница "В последний путь"
-                </a>
-                <button class="hamburger" id="hamburgerBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Главная</a></li>
-                <li><a href="#services" class="nav-link">Услуги</a></li>
-                <li><a href="#doctors" class="nav-link">Врачи</a></li>
-                <li><a href="#contact" class="nav-link">Контакты</a></li>
-                <li><a href="pages/faq.html" class="nav-link">FAQ</a></li>
-                <li><a href="pages/about.html" class="nav-link">О нас</a></li>
-                <li><a href="#appointment" class="btn btn-primary">Записать приём</a></li>
-            </ul>
-        </div>
-    </nav>
+<?php
+declare(strict_types=1);
 
+require_once __DIR__ . '/includes/bootstrap.php';
+
+$pageTitle = 'Больница "В последний путь"';
+$NAV_BASE = '';
+$ASSETS = 'assets/';
+$extraCss = ['hero.css', 'services.css', 'doctors.css', 'appointment.css', 'stats.css', 'contact.css'];
+
+require __DIR__ . '/includes/partials/public_head.php';
+require __DIR__ . '/includes/partials/public_nav.php';
+?>
     <section class="hero" id="home">
         <div class="hero-content">
             <h1 class="hero-title">Ваше здоровье - наш приоритет</h1>
@@ -304,72 +267,11 @@
             </form>
         </div>
     </section>
-
-
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Больница "В последний путь"</h3>
-                    <p>Ваше здоровье - наш приоритет</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Быстрые ссылки</h4>
-                    <ul>
-                        <li><a href="#home">Главная</a></li>
-                        <li><a href="pages/services.html">Услуги</a></li>
-                        <li><a href="#doctors">Врачи</a></li>
-                        <li><a href="#contact">Контакты</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Услуги</h4>
-                    <ul>
-                        <li><a href="#services">Консультация</a></li>
-                        <li><a href="#services">Диагностика</a></li>
-                        <li><a href="#services">Лечение</a></li>
-                        <li><a href="#services">Профилактика</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Информация</h4>
-                    <ul>
-                        <li><a href="pages/license.html">Лицензия</a></li>
-                        <li><a href="pages/privacy.html">Политика конфиденциальности</a></li>
-                        <li><a href="pages/terms.html">Условия использования</a></li>
-                        <li><a href="pages/faq.html">FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 Больница "В последний путь". Разработана на конкурс ПрофМастерства. </p>
-            </div>
-        </div>
-    </footer>
-
-    <button class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
+<?php
+require __DIR__ . '/includes/partials/public_footer.php';
+?>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/site-api.js"></script>
+    <script src="asssets/js/appointment.js"></script>
 </body>
 </html>
