@@ -23,192 +23,10 @@ require dirname(__DIR__) . '/includes/partials/public_nav.php';
 
     <section class="services" style="padding: 80px 0 60px;">
         <div class="container">
-            <h2 class="section-title">Специализированная Помощь</h2>
-            <p class="section-subtitle">Опытные врачи в каждой области медицины</p>
-
-            <div class="services-grid" style="margin-top: 50px;">
-                <div class="service-card">
-                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
-                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
-                            <img src="../assets/images/services/Kardio.jpg" alt="Кардиология" class="doctor-photo">
-                        </div>
-                        <div>
-                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Кардиология</h3>
-                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
-                                Диагностика и лечение заболеваний сердечно-сосудистой системы. Мы специализируемся на профилактике инфарктов, инсультов и других сердечных осложнений.
-                            </p>
-                            <div style="margin-top: 15px; text-align: left;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: var(--muted);">
-                                    <li>✓ Консультация кардиолога</li>
-                                    <li>✓ ЭКГ и Эхокардиография</li>
-                                    <li>✓ Холтеровское мониторирование</li>
-                                    <li>✓ Лечение аритмий и гипертензии</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
-                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
-                            <img src="../assets/images/services/Pyls.jpg" alt="Пульмонология" class="doctor-photo">
-                        </div>
-                        <div>
-                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Пульмонология</h3>
-                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
-                                Лечение заболеваний дыхательной системы и легких. От простой простуды до хронических заболеваний - мы окажем профессиональную помощь.
-                            </p>
-                            <div style="margin-top: 15px; text-align: left;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: var(--muted);">
-                                    <li>✓ Диагностика астмы и ХОБЛ</li>
-                                    <li>✓ Рентгенография легких</li>
-                                    <li>✓ Спирометрия</li>
-                                    <li>✓ Лечение пневмонии и бронхита</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
-                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
-                            <img src="../assets/images/services/Stomat.jpg" alt="Стоматология" class="doctor-photo">
-                        </div>
-                        <div>
-                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Стоматология</h3>
-                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
-                                Профилактика и лечение заболеваний зубов и полости рта. Современные безболезненные методы лечения и красивая улыбка.
-                            </p>
-                            <div style="margin-top: 15px; text-align: left;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: var(--muted);">
-                                    <li>✓ Профилактическая чистка</li>
-                                    <li>✓ Лечение кариеса</li>
-                                    <li>✓ Протезирование и имплантация</li>
-                                    <li>✓ Отбеливание зубов</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
-                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
-                            <img src="../assets/images/services/Oftalm.jpg" alt="Офтальмология" class="doctor-photo">
-                        </div>
-                        <div>
-                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Офтальмология</h3>
-                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
-                                Диагностика и коррекция нарушений зрения. Лазерная коррекция, очки и контактные линзы под индивидуальный подбор.
-                            </p>
-                            <div style="margin-top: 15px; text-align: left;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: var(--muted);">
-                                    <li>✓ Проверка зрения и подбор очков</li>
-                                    <li>✓ Лазерная коррекция зрения</li>
-                                    <li>✓ Диагностика катаракты и глаукомы</li>
-                                    <li>✓ Хирургия сетчатки</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
-                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
-                            <img src="../assets/images/services/Nevro.jpg" alt="Неврология" class="doctor-photo">
-                        </div>
-                        <div>
-                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Неврология</h3>
-                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
-                                Лечение заболеваний нервной системы. От головных болей до сложных неврологических состояний - мы знаем как помочь.
-                            </p>
-                            <div style="margin-top: 15px; text-align: left;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: var(--muted);">
-                                    <li>✓ Диагностика мигреней и головокружений</li>
-                                    <li>✓ ЭЭГ и МРТ мозга</li>
-                                    <li>✓ Лечение инсультов и ишемии</li>
-                                    <li>✓ Реабилитация после инсульта</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; align-items: start;">
-                        <div class="service-icon" style="width: 96px; height: 96px; margin: 0;">
-                            <img src="../assets/images/services/Orto.jpg" alt="Ортопедия" class="doctor-photo">
-                        </div>
-                        <div>
-                            <h3 style="margin-bottom: 10px; font-size: 28px; text-align: left;">Ортопедия</h3>
-                            <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.8; text-align: left;">
-                                Диагностика и лечение заболеваний костно-мышечной системы. Помощь при переломах, вывихах и заболеваниях суставов.
-                            </p>
-                            <div style="margin-top: 15px; text-align: left;">
-                                <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 8px;">Предоставляемые услуги:</p>
-                                <ul style="list-style: none; color: var(--muted);">
-                                    <li>✓ Лечение переломов и вывихов</li>
-                                    <li>✓ Артроскопия суставов</li>
-                                    <li>✓ Протезирование суставов</li>
-                                    <li>✓ Физическая реабилитация</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="services" style="padding: 10px 0 80px;">
-        <div class="container">
-            <h2 class="section-title">Дополнительные Услуги</h2>
-            <p class="section-subtitle">Комплексный уход для вашего здоровья</p>
-
-            <div class="services-grid" style="margin-top: 50px;">
-                <div class="service-card">
-                    <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">🧬</i>
-                    <h3>Лабораторные Анализы</h3>
-                    <p style="margin-top: 10px;">Полный спектр клинических и биохимических анализов крови</p>
-                </div>
-
-                <div class="service-card">
-                    <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">📋</i>
-                    <h3>УЗИ Диагностика</h3>
-                    <p style="margin-top: 10px;">УЗИ всех органов и систем организма</p>
-                </div>
-
-                <div class="service-card">
-                    <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">💊</i>
-                    <h3>Фармакотерапия</h3>
-                    <p style="margin-top: 10px;">Подбор оптимальной медикаментозной терапии</p>
-                </div>
-
-                <div class="service-card">
-                    <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">🏃</i>
-                    <h3>Физиотерапия</h3>
-                    <p style="margin-top: 10px;">Самые лучшие физиотерапии это на СМГ</p>
-                </div>
-
-                <div class="service-card">
-                    <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">🧘</i>
-                    <h3>Профилактика</h3>
-                    <p style="margin-top: 10px;">Профилактические осмотры и псих-диспансеризация</p>
-                </div>
-
-                <div class="service-card">
-                    <i style="font-size: 40px; color: var(--primary-color); margin-bottom: 15px; display: block;">📱</i>
-                    <h3>Телемедицина</h3>
-                    <p style="margin-top: 10px;">Онлайн консультации с врачами</p>
-                </div>
+            <h2 class="section-title">Наши Услуги</h2>
+            <p class="section-subtitle">Полный спектр медицинских услуг для вашего здоровья</p>
+            <div class="services-grid" id="servicesGrid">
+                <p class="section-subtitle" style="grid-column:1/-1;">Загрузка услуг…</p>
             </div>
         </div>
     </section>
@@ -218,7 +36,7 @@ require dirname(__DIR__) . '/includes/partials/public_nav.php';
             <div style="max-width: 920px; margin: 0 auto; padding: 40px 24px; border-radius: 24px; border: 1px solid var(--line); background: var(--bg-card); box-shadow: var(--shadow);">
                 <h2 style="font-size: 42px; margin-bottom: 20px; color: var(--text);">Запишитесь на приём сегодня</h2>
                 <p style="font-size: 18px; margin-bottom: 30px; color: var(--muted);">Профессиональная помощь ждёт вас</p>
-                <a href="../index.html#appointment" class="btn btn-primary">Записаться на приём</a>
+                <a href="../index.php#appointment" class="btn btn-primary">Записаться на приём</a>
             </div>
         </div>
     </section>
@@ -286,6 +104,7 @@ require dirname(__DIR__) . '/includes/partials/public_nav.php';
 require dirname(__DIR__) . '/includes/partials/public_footer.php';
 ?>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/site-api.js"></script>
 </body>
 </html>
 
