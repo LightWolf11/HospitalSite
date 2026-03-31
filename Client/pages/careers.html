@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>В команду — Больница «В последний путь»</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/buttons.css">
+    <link rel="stylesheet" href="../assets/css/appointment.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../assets/images/logo.png" type="image/png">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="../index.html" class="logo">
+                    <img src="../assets/images/logo.png" width="50" height="50"> Больница "В последний путь"
+                </a>
+                <button class="hamburger" id="hamburgerBtn">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html#home" class="nav-link">Главная</a></li>
+                <li><a href="services.html" class="nav-link">Услуги</a></li>
+                <li><a href="../index.html#doctors" class="nav-link">Врачи</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Контакты</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="about.php" class="nav-link">О нас</a></li>
+                <li><a href="careers.html" class="nav-link" style="color: var(--secondary-color);">В команду</a></li>
+                <li><a href="../cabinet/login.php" class="nav-link">Личный кабинет</a></li>
+                <li><a href="../index.html#appointment" class="btn btn-primary">Записать приём</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="appointment" style="padding-top: 100px; padding-bottom: 80px;">
+        <div class="container">
+            <h1 class="section-title">Работа в нашей команде</h1>
+            <p class="section-subtitle">Заполните анкету — ответ придёт на указанный email. Резюме в формате PDF не обязательно.</p>
+
+            <form class="appointment-form" id="teamForm" action="../api/team_submit.php" method="post" enctype="multipart/form-data" style="margin-top: 2rem;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="full_name">ФИО</label>
+                        <input type="text" id="full_name" name="full_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Желаемая должность</label>
+                        <input type="text" id="position" name="position" placeholder="Например, медсестра">
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="experience">Опыт и образование</label>
+                    <textarea id="experience" name="experience" rows="4" placeholder="Кратко опишите опыт работы…"></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="message">Почему вы хотите к нам</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="cv">Резюме (PDF, до 5 МБ)</label>
+                    <input type="file" id="cv" name="cv" accept="application/pdf">
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить анкету</button>
+            </form>
+            <p id="teamFormMsg" class="form-message" style="display:none;margin-top:1rem;"></p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Больница «В последний путь».</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+    document.getElementById('teamForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var fd = new FormData(this);
+        fetch(this.action, { method: 'POST', body: fd, credentials: 'same-origin' })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var m = document.getElementById('teamFormMsg');
+                m.style.display = 'block';
+                if (data.ok) {
+                    m.className = 'form-message success';
+                    m.textContent = 'Анкета отправлена. Спасибо!';
+                    document.getElementById('teamForm').reset();
+                } else {
+                    m.className = 'form-message error';
+                    m.textContent = data.error || 'Ошибка';
+                }
+            })
+            .catch(function() {
+                var m = document.getElementById('teamFormMsg');
+                m.style.display = 'block';
+                m.className = 'form-message error';
+                m.textContent = 'Ошибка сети';
+            });
+    });
+    </script>
+</body>
+</html>
