@@ -1,0 +1,85 @@
+
+.services {
+    padding: 60px 0;
+    background: var(--light-color);
+}
+
+.services .section-title {
+    color: var(--dark-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.services .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 40px;
+    opacity: 0.8;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.service-card {
+    position: relative;
+    background: white;
+    padding: 30px 24px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.55s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    animation: slideUp 0.6s ease both;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5) { animation-delay: 0.5s; }
+.service-card:nth-child(6) { animation-delay: 0.6s; }
+
+.services .service-card:hover {
+    transform: translate3d(0, -6px, 0) !important;
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.18);
+    border-color: rgba(128, 72, 203, 0.75);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.service-icon {
+    width: 100%;
+    height: 210px;
+    margin: 0 auto 22px;
+    background: #f0f0f0;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.35s ease;
+}
+
+.service-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 1px;
+}
+
+.service-card h3 {
+    font-size: 22px;
+    margin-bottom: 0;
+    color: var(--dark-color);
+}
+
+.service-card p {
+    display: none;
+}
